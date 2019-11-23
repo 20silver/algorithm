@@ -7,8 +7,10 @@ Problem::Problem(set<Coordinate> walls, State initialState, set<Coordinate> goal
 }
 
 bool Problem::goalTest(State state){
+	set<int>::iterator iter;
     for(Coordinate box : state.boxes){
-        if(goals.find(box) = goals.end())
+		iter = goals.find(box);
+        if(iter == goals.end())
             return false;
     }
     return true;
@@ -54,45 +56,71 @@ bool Problem::deadlockTest(State state){
 }
 
 vector<string> Problem::actions(State state){
-    vector<string> actionList = new vector<string>();
+    vector<string> actionList();
     int row = state.player.row;
     int col = state.player.col;
     HashSet<Coordinate> boxes = state->boxes;
+	set<int>::iterator iter;
+	set<int>::iterator iter1;
+	set<int>::iterator iter2;
+	set<int>::iterator iter3;
 
-    Coordinate newPlayer = new Coordinate(row-1,col);
-    Coordinate newBox = new Coordinate(row-2, col);
-    if (walls.find(newPlayer) = walls.end())
-        if (boxes.find(newPlayer) != boxes.end()&&(boxes.find(newBox) != boxes.end()||walls.find(newBox) != walls.end())
-            ;
-        else
-            actionList.push_back("u");
+    Coordinate newPlayer(row-1,col);
+    Coordinate newBox(row-2, col);
+	iter = walls.find(newPlayer)
+	if (iter == walls.end()) {
+		iter1 = boxes.find(newPlayer);
+		iter2 = boxes.find(newBox);
+		iter3 = walls.find(newBox);
+		if (iter1 != boxes.end() && (iter2 != boxes.end() || iter3 != walls.end())
+			;
+		else
+			actionList.push_back("u");
+	}
     newPlayer = new Coordinate(row,col+1);
     newBox = new Coordinate(row, col+2);
-    if (walls.find(newPlayer) = walls.end())
-        if (boxes.find(newPlayer) != boxes.end()&&(boxes.find(newBox) != boxes.end()||walls.find(newBox) != walls.end())
-            ;
-        else
-            actionList.push_back("r");
+	iter = walls.find(newPlayer);
+	if (iter == walls.end()) {
+		iter1 = boxes.find(newPlayer);
+		iter2 = boxes.find(newBox);
+		iter3 = walls.find(newBox);
+		if (iter1 != boxes.end() && iter2 != boxes.end() || iter3 != walls.end())
+			;
+		else
+			actionList.push_back("r");
+	}
     newPlayer = new Coordinate(row+1,col);
     newBox = new Coordinate(row+2, col);
-    if(walls.find(newPlayer) = walls.end())
-        if (boxes.find(newPlayer) != boxes.end()&&(boxes.find(newBox) != boxes.end()||walls.find(newBox) != walls.end()))
-            ;
-        else
-            actionList.push_back("d");
+	iter = walls.find(newPlayer);
+	if (iter == walls.end()) {
+		iter1 = boxes.find(newPlayer);
+		iter2 = boxes.find(newBox);
+		iter3 = walls.find(newBox);
+		if (iter1 != boxes.end() && iter2 != boxes.end() || iter3 != walls.end()))
+			;
+		else
+			actionList.push_back("d");
+	}
     newPlayer = new Coordinate(row,col-1);
     newBox = new Coordinate(row, col-2);
-    if (walls.find(newPlayer) = walls.end())
-        if (boxes.find(newPlayer) != boxes.end()&&(boxes.find(newBox) != boxes.end()||walls.find(newBox) != walls.end()))
-            ;
-        else
-            actionList.push_back("l");
+	iter = walls.find(newPlayer);
+	if (iter == walls.end()) {
+		iter1 = boxes.find(newPlayer);
+		iter2 = boxes.find(newBox);
+		iter3 = walls.find(newBox);
+		if (iter1 != boxes.end() && iter2 != boxes.end() || iter3 != walls.end()))
+			;
+		else
+			actionList.push_back("l");
+	}
     return actionList;
 }
 
-bool Problem::setContains(HashSet<Coordinate> set, int row, int col){
+bool Problem::setContains(set<Coordinate> set, int row, int col){
     temp = new Coordinate(row, col)
-    if(set.find(temp) != set.end())
+	set<int>::iterator iter;
+	iter = set.find(temp);
+    if(iter != set.end())
         return true;
     return false;
 }
