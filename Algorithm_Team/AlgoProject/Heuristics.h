@@ -12,7 +12,7 @@ using namespace std;
 class Heuristics {
 private:
 	set<Coordinate> *goals;
-	vector<vector<double>> *cost;
+	vector<vector<double>> cost;
 	HungarianAlgorithm *h;			// 'e' : 유클리디안, 'm' : 맨하탄. 둘 중에 하나. 이 값에 따라 거리 계산 방법이 달라짐.
 	char hChoice;
 

@@ -4,7 +4,7 @@
 Heuristics::Heuristics(set<Coordinate> *goals, char hChoice) {
 	this->goals = goals;
 	this->hChoice = hChoice;
-	this->cost = new vector<vector<double>>(3, vector<double>(3, 0.0));
+	this->cost = vector<vector<double>>(3, vector<double>(3, 0.0));
 	h = new HungarianAlgorithm(9);			// 원래 cost.size() 들어가는데.. 최대 3x3 = 9 니까 9로 줘도 괜찮지 않을까..? ㅎ ㅎ
 }
 
@@ -98,7 +98,7 @@ double Heuristics::getHeuristic(State *state) {
 	}
 
 	// HungarianAlgorithm 클래스에서 excute 함수 실행...
-	vector<int> result = h->execute(*cost);
+	vector<int> result = h->execute(cost);
 	double max_ = 0;
 	for (int k = 0; k < goals->size(); k++) {
 		int goalCol = result[k];
