@@ -18,45 +18,45 @@ string Search::bfs(Problem *p)
     // long startTime = 
     int totalNode = 1;
     int redundant = 0;
-	void* ptr;
+	void* ptr = nullptr;
 	string str = "";
-    Node *node = new Node(p->initialState, (Node *)ptr, 0, str); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
+    Node* node = new Node(p->initialState, (Node *)ptr, 0, str); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
     if(p->goalTest(node->state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node) 
     return getSolution(BFS, node, totalNode, 0, 0, 0);
 
-    set<State> explored;
-    deque<Node> fringe;
+    set<State*> explored;
+    deque<Node*> fringe;
     fringe.push_front(node);
     vector<string> actions;
-    Node *child;
+    Node* child;
 
     while(!fringe.empty())
     {
         node = fringe.pop_front(); // 맨 앞 노드 가져오기
-        explored.insert(node->state) // add node.STATE to explored 
-        actions = p.actions(node->state); // get actions -> ??
+        explored.insert(node->state); // add node.STATE to explored
+        actions = p->actions(node->state); // get actions -> ??
         for (int i = 0; i < actions.size(); i++)
         {
-            child = getChild(*p, node, actions.get(i), false);
-            if(child != NULL && child.state != NULL)
+            child = getChild(p, node, actions[i], false);
+            if(child != nullptr && child->state != nullptr)
             {
                 totalNode ++;
                 // if child.STATE is not in explored or fringe, then
-                deque<Node>::iterator it = find(fringe.begin(), fringe.end(), child);
-                set<State>::iterator it_s = find(explored.begin(), explored.end(), childe.state);
+                auto it = find(fringe.begin(), fringe.end(), child);
+                auto it_s = explored.find(child->state);
                 if((it_s == explored.end()) && (it == fringe.end()) /*!explored.contains(child.state)*//* !fringe.contains(child) */) 
                 {
                     string solution = getSolution(BFS, child, totalNode, redundant, fringe.size(), explored.size());
-                    if(p.goalTest(child->state))
+                    if(p->goalTest(child->state))
                         return solution;
-                    if(!p.deadlockTest(child->state)) // check deadlock state
+                    if(!p->deadlockTest(child->state)) // check deadlock state
                         fringe.push_front(child);
                 }
                 else redundant ++;
             }
         }
     }
-    return getSolution(BFS, NULL, tolalNode, redundant, fringe.size(), explored.size());
+    return getSolution(BFS, NULL, totalNode, redundant, fringe.size(), explored.size());
 } // end bfs
 
 // bfs와 비슷하지만 queue대신 stack 사용 (LIFO)
@@ -64,46 +64,48 @@ string Search::dfs(Problem *p)
 {
     int totalNode = 1;
     int redundant = 0;
-    Node node(p.initialState, NULL, 0, "");
-    if(p.goalTest(node->state))
-        return getSolution(DFS, node, totlaNode, 0, 0, 0);
+    void* ptr = nullptr;
+    string str = "";
+    Node *node = new Node(p->initialState, (Node *)ptr, 0, str);
+    if(p->goalTest(node->state))
+        return getSolution(DFS, node, totalNode, 0, 0, 0);
     
-    set<State> explored;
-    deque<Node> fringe;
+    set<State*> explored;
+    deque<Node*> fringe;
     fringe.push_back(node); 
     while(!fringe.empty())
     {
         node = fringe.pop_back(); // 첫 번째 노드 꺼내기
         explored.insert(node->state);
-        vector<string> actions = p.actions(node.state); // get actions
+        vector<string> actions = p->actions(node->state); // get actions
         for (int i = 0; i < actions.size(); i++)
         {
-            Node child = getChild(p, node, actions.get(i), false);
-            if(child!= NULL && child.state != NULL)
+            Node* child = getChild(p, node, actions[i], false);
+            if(child != nullptr && child->state != nullptr)
             {
                 totalNode++;
                 // if child.STATE is not explored or fringe, then
-                deque<Node>::iterator it = find(fringe.begin(), fringe.end(), child);
-                set<State>::iterator it_s = find(explored.begin(), explored.end(), childe.state);
-                if((it_s == explored.end()) ** (it == fringe.end()))
+                auto it = find(fringe.begin(), fringe.end(), child);
+                auto it_s = explored.find(child->state);
+                if((it_s == explored.end()) && (it == fringe.end()))
                 {
-                    string solution = getSolution(DFS, child, totlaNode, redundant, fringe.size(), explored.size());
-                    if(p.goalTest(child.state))
+                    string solution = getSolution(DFS, child, totalNode, redundant, fringe.size(), explored.size());
+                    if(p->goalTest(child->state))
                         return solution;
-                    if(!p.deadlockTest(child.state))
+                    if(!p->deadlockTest(child->state))
                         fringe.push_back(child);
                 }
                 else redundant ++;
             }
         }
     }
-    return getSolution(DFS, NULL, totlaNode, redundant, fringe.size(), explored.size());
+    return getSolution(DFS, nullptr, totalNode, redundant, fringe.size(), explored.size());
 } // end dfs
 
 // TODO
 // Implementation for uniform-cost search, greedy search, and A* search
 // 위 메소드들은 모두 같은 코드를 쓰는데, 우선순위 큐를 sorting하는 코드만 달라진다
-string Search::prioritySearch(Problem *p, char *choice)
+string Search::prioritySearch(Problem *p, char choice)
 {
     string method = UCS;
     bool isUCS = true;
@@ -114,48 +116,51 @@ string Search::prioritySearch(Problem *p, char *choice)
 // TODO : Comparators
 
 //  최종 결과를 string으로 출력하는 함수
-string Search::getSolution(string method, Node n, int totalNode, int redundant, int fringeSize, int exploredSize)
+string Search::getSolution(string method, Node* n, int totalNode, int redundant, int fringeSize, int exploredSize)
 {
     string result = "";
     int steps = 0;
-    if(n == NULL)
+    if(n == nullptr)
         result = "Failed to solve the puzzle";
     else 
-        wihle(n.parent!=NULL)
+        while(n->parent!= nullptr)
         {
-            result = n.move + " " + result;
-            n = n.parent;
+            result = n->move + " " + result;
+            n = n->parent;
             steps ++;
         }
-    result = "Using " + method + ":\n" + result + "\n(total of " + steps + " steps)" +
-    "\na) Number of nodes generated: " + totalNode + 
-    "\nb) Number of nodes containing states that were generated previously: " + redundant + 
-    "\nc) Number of nodes on the fringe when termination occurs: " + fringeSize + 
-    "\nd) Number of nodes on the explored list (if there is one) when termination occurs: " + exploredSize +
+    result = "Using " + method + ":\n" + result + "\n(total of " + to_string(steps) + " steps)" +
+    "\na) Number of nodes generated: " + to_string(totalNode) +
+    "\nb) Number of nodes containing states that were generated previously: " + to_string(redundant) +
+    "\nc) Number of nodes on the fringe when termination occurs: " + to_string(fringeSize) +
+    "\nd) Number of nodes on the explored list (if there is one) when termination occurs: " + to_string(exploredSize) +
 
     return result;
 } // end getSolution
 
 // @return : action을 수행하고 난 후 n의 child, 여기서 action은 (l, r, u, d)
 // if isUcs is true, add 1 to newCost whenever box is pushed
-Node Search::getChild(Problem p, Node n, string action, bool isUcs)
+Node* Search::getChild(Problem* p, Node* n, string action, bool isUcs)
 {
-    set<Coordinate> boxes(n.state.boxes.clone.begin(), n.state.boxes.clone.end());
-    int row = n.state.player.row;
-    int col = n.state.player.col;
-    int newCost = n.cost + 1;
-    Coordinate newPlayer = n.state.player;
-    char choice = action.charAt(0);
+    set<Coordinate> boxes(n->state->boxes->begin(), n->state->boxes->end());
+    int row = n->state->player->row;
+    int col = n->state->player->col;
+    int newCost = n->cost + 1;
+    Coordinate *newPlayer = n->state->player;
+    char choice = action[0];
+
+    set<Coordinate>::iterator it;
     switch(choice) {
         case 'u' : // action : up
             // update player coordinate
             newPlayer = new Coordinate(row-1, col);
             // check if player is pushing a box
-            if(boxes.contains(newPlayer))
+            it = find(boxes.begin(), boxes.end(), newPlayer);
+            if(it != boxes.end())
             {
-                Coordinate newBox(row-2, col);
-                boxes.erase(newPlayer);
-                boxes.insert(newBox);
+                Coordinate* newBox = new Coordinate(row-2, col);
+                boxes.erase(*newPlayer);
+                boxes.insert(*newBox);
                 if(isUcs)
                     newCost++;
             }
@@ -164,11 +169,12 @@ Node Search::getChild(Problem p, Node n, string action, bool isUcs)
             //update player coordinate
             newPlayer = new Coordinate(row+1, col);
             //check if player is pushing a box
-            if (boxes.contains(newPlayer)) {
-                Coordinate newBox(row+2, col);
+            it = find(boxes.begin(), boxes.end(), newPlayer);
+            if (it != boxes.end()) {
+                Coordinate* newBox = new Coordinate(row+2, col);
                 //update box coordinate
-                boxes.remove(newPlayer);
-                boxes.add(newBox);
+                boxes.erase(*newPlayer);
+                boxes.insert(*newBox);
                 if (isUcs)
                     newCost++;
             }
@@ -177,11 +183,12 @@ Node Search::getChild(Problem p, Node n, string action, bool isUcs)
             // update player coordinate
             newPlayer = new Coordinate(row, col-1);
             //check if player is pushing a box
-            if (boxes.contains(newPlayer)) {
-                Coordinate newBox(row, col-2);
+            it = find(boxes.begin(), boxes.end(), newPlayer);
+            if (it != boxes.end()) {
+                Coordinate* newBox = new Coordinate(row, col-2);
                 //update box coordinate
-                boxes.remove(newPlayer);
-                boxes.add(newBox);
+                boxes.erase(*newPlayer);
+                boxes.insert(*newBox);
                 if (isUcs)
                     newCost++;
             }
@@ -190,17 +197,16 @@ Node Search::getChild(Problem p, Node n, string action, bool isUcs)
             //update player coordinate
             newPlayer = new Coordinate(row, col+1);
             //check if player is pushing a box
-            if (boxes.contains(newPlayer)) {
-                Coordinate newBox(row, col+2);
+            it = find(boxes.begin(), boxes.end(), newPlayer);
+            if (it != boxes.end()) {
+                Coordinate* newBox = new Coordinate(row, col+2);
                 //update box coordinate
-                boxes.remove(newPlayer);
-                boxes.add(newBox);
+                boxes.erase(*newPlayer);
+                boxes.insert(*newBox);
                 if (isUcs)
                     newCost++;
             }
         break;
-    }   
-    State new_state(boxes, newPlayer);
-    Node new_node(new_state, n, newCost, to_string(choice));
-    return new_node;
+    }
+    return new Node(new State(boxes, newPlayer), n, newCost, to_string(choice));
 } // end getChild

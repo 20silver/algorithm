@@ -22,7 +22,7 @@ class Search {
         Heuristics *h; // 거리계산하는 클래스..
 
         string getSolution(string method, Node *n, int totalNode, int redundant, int fringeSize, int exploredSize);
-        Node getChild(Problem *p, Node *n, string action, bool isUcs);
+        Node* getChild(Problem *p, Node *n, string action, bool isUcs);
 
     public :
         Search(Heuristics *h);
