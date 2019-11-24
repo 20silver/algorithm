@@ -58,7 +58,7 @@ bool Problem::deadlockTest(State *state){
 }
 
 vector<string> Problem::actions(State *state){
-    vector<string> actionList();
+    vector<string> actionList;
     int row = state->player->row;
     int col = state->player->col;
     set<Coordinate> *boxes = state->boxes;
@@ -74,43 +74,52 @@ vector<string> Problem::actions(State *state){
 		iter1 = (*boxes).find(newPlayer);
 		iter2 = (*boxes).find(newBox);
 		iter3 = walls.find(newBox);
-		if (iter1 != (*boxes).end() && (iter2 != (*boxes).end() || iter3 != walls.end())
-			
+		if (iter1 != (*boxes).end() && (iter2 != (*boxes).end() || iter3 != walls.end()))
+			;
 		else
-			actionList.push_back("u");
+		{
+			string temp = "u";
+			vector<string> v;
+
+			actionList.push_back(temp);
+
+		}
 	}
-    newPlayer = new Coordinate(row,col+1);
-    newBox = new Coordinate(row, col+2);
+	Coordinate newPlayer(row, col + 1);
+	Coordinate newBox(row, col + 2);
+    /*newPlayer = new Coordinate(row,col+1);
+    newBox = new Coordinate(row, col+2);*/
 	iter = walls.find(newPlayer);
 	if (iter == walls.end()) {
-		iter1 = boxes.find(newPlayer);
-		iter2 = boxes.find(newBox);
+		iter1 = (*boxes).find(newPlayer);
+		iter2 = (*boxes).find(newBox);
 		iter3 = walls.find(newBox);
-		if (iter1 != boxes.end() && iter2 != boxes.end() || iter3 != walls.end())
+		if (iter1 != (*boxes).end() && iter2 != (*boxes).end() || iter3 != walls.end())
 			;
 		else
 			actionList.push_back("r");
 	}
-    newPlayer = new Coordinate(row+1,col);
-    newBox = new Coordinate(row+2, col);
+	Coordinate newPlayer(row+1, col);
+	Coordinate newBox(row + 2, col);
+   
 	iter = walls.find(newPlayer);
 	if (iter == walls.end()) {
-		iter1 = boxes.find(newPlayer);
-		iter2 = boxes.find(newBox);
+		iter1 = (*boxes).find(newPlayer);
+		iter2 = (*boxes).find(newBox);
 		iter3 = walls.find(newBox);
-		if (iter1 != boxes.end() && iter2 != boxes.end() || iter3 != walls.end()))
+		if (iter1 != (*boxes).end() && iter2 != (*boxes).end() || iter3 != walls.end()))
 			;
 		else
 			actionList.push_back("d");
 	}
-    newPlayer = new Coordinate(row,col-1);
-    newBox = new Coordinate(row, col-2);
+	Coordinate newPlayer(row, col - 1);
+	Coordinate newBox(row, col - 1);
 	iter = walls.find(newPlayer);
 	if (iter == walls.end()) {
-		iter1 = boxes.find(newPlayer);
-		iter2 = boxes.find(newBox);
+		iter1 = (*boxes).find(newPlayer);
+		iter2 = (*boxes).find(newBox);
 		iter3 = walls.find(newBox);
-		if (iter1 != boxes.end() && iter2 != boxes.end() || iter3 != walls.end()))
+		if (iter1 != (*boxes).end() && iter2 != (*boxes).end() || iter3 != walls.end()))
 			;
 		else
 			actionList.push_back("l");
@@ -118,11 +127,11 @@ vector<string> Problem::actions(State *state){
     return actionList;
 }
 
-bool Problem::setContains(set<Coordinate> set, int row, int col){
-    temp = new Coordinate(row, col)
-	set<int>::iterator iter;
-	iter = set.find(temp);
-    if(iter != set.end())
+bool Problem::setContains(set<Coordinate> argset, int row, int col){
+	Coordinate temp(row, col);
+	set<Coordinate>::iterator iter;
+	iter = argset.find(temp);
+    if(iter != argset.end())
         return true;
     return false;
 }
