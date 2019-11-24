@@ -33,7 +33,7 @@ HungarianAlgorithm::HungarianAlgorithm (int matrixSize)
     cost matrix를 기반으로 workers 와 job의 minimum cost를 계산
     a matching value of -1 indicates that the corresponding worker is unassigned
 */
-vector<int> HungarianAlgorithm::execute(vector<vector<double> > costMatrix)
+vector<int> HungarianAlgorithm::execute(vector<vector<double>> &costMatrix)
 {
     /*
         Heuristics to improve performance :

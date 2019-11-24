@@ -4,7 +4,7 @@
 Heuristics::Heuristics(set<Coordinate> *goals, char hChoice) {
 	this->goals = goals;
 	this->hChoice = hChoice;
-	this->cost = new double[3][3];
+	this->cost = new vector<vector<double>>(3, vector<double>(3, 0.0));
 	h = new HungarianAlgorithm(9);			// 원래 cost.size() 들어가는데.. 최대 3x3 = 9 니까 9로 줘도 괜찮지 않을까..? ㅎ ㅎ
 }
 
@@ -36,7 +36,8 @@ double Heuristics::calculate(State *s, string method) {
 	// 각 박스 별로, 자신과 가장 가까운 Goal 과의 거리를 sum 에 더함.
 	set<Coordinate>::iterator it;
 	for (it = boxes->begin(); it != boxes->end(); it++) {
-		double boxMin = getDist(*it, goals, method);
+		Coordinate box = *it;
+		double boxMin = getDist(&box, goals, method);
 		sum += boxMin;
 	}
 
@@ -45,18 +46,20 @@ double Heuristics::calculate(State *s, string method) {
 
 
 
-double Heuristics::getDist(const Coordinate *obj, set<Coordinate> *sets, string method) {
+double Heuristics::getDist(Coordinate *obj, set<Coordinate> *sets, string method) {
 	double minDist = 1000000;
 
+	// 인자로 받은 set 의 Coordinate 들을 하나씩 가져옴
 	set<Coordinate>::iterator it;
 	for (it = sets->begin(); it != sets->end(); it++) {
+		Coordinate coord = *it;
 		double dist;
 		//  맨하탄 공식으로 거리를 구한다면...
 		if (method == "m")
-			dist = manhattan(obj, it);
+			dist = manhattan(obj, &coord);
 		// 아닐 경우엔 유클리디언 공식으로 구함.
 		else
-			dist = euclidean(obj, it);
+			dist = euclidean(obj, &coord);
 		
 		if (dist < minDist)
 			minDist = dist;
@@ -75,12 +78,19 @@ double Heuristics::getHeuristic(State *state) {
 		return calculate(state, "e");
 
 	int i = 0;
+	
+	// State 의 Boxes 를 하나씩 가져옴.
 	set<Coordinate>::iterator it;
 	for (it = state->boxes->begin(); it != state->boxes->end(); it++) {
+		Coordinate box = *it;
 		int j = 0;
-		double playerCost = manhattan(state->player, it);
-		for (auto goal : goals) {
-			cost[i][j] = manhattan(it, goal);
+		double playerCost = manhattan(state->player, &box);
+
+		// Goal 을 하나씩 가져옴.
+		set<Coordinate>::iterator goal_it;
+		for (goal_it = goals->begin(); goal_it != goals->end(); goal_it++) {
+			Coordinate goal = *goal_it;
+			cost[i][j] = manhattan(&box, &goal);
 			cost[i][j] += playerCost;
 			j++;
 		}
@@ -88,9 +98,9 @@ double Heuristics::getHeuristic(State *state) {
 	}
 
 	// HungarianAlgorithm 클래스에서 excute 함수 실행...
-	vector<int> result = h.execute(cost);
+	vector<int> result = h->execute(*cost);
 	double max_ = 0;
-	for (int k = 0; k < goals.size(); k++) {
+	for (int k = 0; k < goals->size(); k++) {
 		int goalCol = result[k];
 		if (goalCol > -1)
 			max_ += cost[k][goalCol];

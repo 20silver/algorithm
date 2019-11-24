@@ -12,10 +12,10 @@ class HungarianAlgorithm {
          */
         HungarianAlgorithm (int matrixSize);
         // excute algorithm
-        vector<int> execute(vector<vector<double> > costMatrix);
+        vector<int> execute(vector<vector<double>> &costMatrix);
 
     private:
-        vector<vector<double> > costMatrix;
+        vector<vector<double>> costMatrix;
         int rows, cols, dim;
         vector<double> labelByWorker, labelByJob;
         vector<int> minSlackWorkerByJob;

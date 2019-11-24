@@ -210,5 +210,5 @@ Node* Search::getChild(Problem* p, Node* n, string action, bool isUcs)
             }
         break;
     }
-    return new Node(new State(boxes, newPlayer), n, newCost, to_string(choice));
+    return new Node(new State(&boxes, newPlayer), n, newCost, to_string(choice));
 } // end getChild
