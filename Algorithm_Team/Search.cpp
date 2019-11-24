@@ -17,13 +17,13 @@ string Search::bfs(Problem p)
     // long startTime = 
     int totalNode = 1;
     int redundant = 0;
-    Node node(p->initialState, NULL, 0, ""); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
-    if(p->goalTest(node->state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node) 
+    Node node(p.initialState, NULL, 0, ""); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
+    if(p.goalTest(node->state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node) 
     return getSolution(BFS, node, totalNode, 0, 0, 0);
 
     set<State> explored;
     deque<Node> fringe;
-    fringe.add(node);
+    fringe.push_front(node);
     vector<string> actions;
     Node child;
 
@@ -61,13 +61,13 @@ string Search::dfs(Problem p)
 {
     int totalNode = 1;
     int redundant = 0;
-    Node node(p->initialState, NULL, 0, "");
-    if(p->goalTest(node->state))
+    Node node(p.initialState, NULL, 0, "");
+    if(p.goalTest(node->state))
         return getSolution(DFS, node, totlaNode, 0, 0, 0);
     
     set<State> explored;
     deque<Node> fringe;
-    fringe.push(node); 
+    fringe.push_back(node); 
     while(!fringe.empty())
     {
         node = fringe.pop_back(); // 첫 번째 노드 꺼내기
@@ -150,7 +150,7 @@ Node Search::getChild(Problem p, Node n, string action, bool isUcs)
             // check if player is pushing a box
             if(boxes.contains(newPlayer))
             {
-                Coordinate newBox = new Coordinate(row-2, col);
+                Coordinate newBox(row-2, col);
                 boxes.erase(newPlayer);
                 boxes.insert(newBox);
                 if(isUcs)
@@ -162,7 +162,7 @@ Node Search::getChild(Problem p, Node n, string action, bool isUcs)
             newPlayer = new Coordinate(row+1, col);
             //check if player is pushing a box
             if (boxes.contains(newPlayer)) {
-                Coordinate newBox = new Coordinate(row+2, col);
+                Coordinate newBox(row+2, col);
                 //update box coordinate
                 boxes.remove(newPlayer);
                 boxes.add(newBox);
@@ -175,7 +175,7 @@ Node Search::getChild(Problem p, Node n, string action, bool isUcs)
             newPlayer = new Coordinate(row, col-1);
             //check if player is pushing a box
             if (boxes.contains(newPlayer)) {
-                Coordinate newBox = new Coordinate(row, col-2);
+                Coordinate newBox(row, col-2);
                 //update box coordinate
                 boxes.remove(newPlayer);
                 boxes.add(newBox);
@@ -188,7 +188,7 @@ Node Search::getChild(Problem p, Node n, string action, bool isUcs)
             newPlayer = new Coordinate(row, col+1);
             //check if player is pushing a box
             if (boxes.contains(newPlayer)) {
-                Coordinate newBox = new Coordinate(row, col+2);
+                Coordinate newBox(row, col+2);
                 //update box coordinate
                 boxes.remove(newPlayer);
                 boxes.add(newBox);
@@ -197,5 +197,7 @@ Node Search::getChild(Problem p, Node n, string action, bool isUcs)
             }
         break;
     }   
-    return new Node(new State(boxed, newPlayer), n, newCost, to_string(choice));
+    State new_state(boxes, newPlayer);
+    Node new_node(new_state, n, newCost, to_string(choice));
+    return new_node;
 } // end getChild

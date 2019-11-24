@@ -15,13 +15,13 @@ using namespace std;
 
 class Search {
     private :
-        static string BFS;
-        static string DFS;
-        static string UCS;
-        static string ASTAR;
-        static string GREEDY;
+        string BFS;
+        string DFS;
+        string UCS;
+        string ASTAR;
+        string GREEDY;
 
-        static Heuristics h; // 거리계산하는 클래스..
+        Heuristics *h; // 거리계산하는 클래스..
 
         string getSolution(string method, Node n, int totalNode, int redundant, int fringeSize, int exploredSize);
         Node getChild(Problem p, Node n, string action, bool isUcs);
