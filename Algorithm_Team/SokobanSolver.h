@@ -1,3 +1,8 @@
+#include "Coordinate.h"
+#include "Problem.h"
+#include "Heuristics.h"
+#include "Serch.h"
+
 #include <hash_set>
 #include <iostream>
 #include <fStream>

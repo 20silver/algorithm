@@ -1,3 +1,7 @@
+#include "Coordinate.h"
+#include "HungarianAlgoruthm.h"
+#include "State.h"
+
 #include <iostream>
 #include <hash_set>
 #include <cmath>

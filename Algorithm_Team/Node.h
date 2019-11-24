@@ -1,4 +1,7 @@
+#include "State.h"
+
 #include <iostream>
+
 using namespace std;
 
 #ifndef NODE_H
