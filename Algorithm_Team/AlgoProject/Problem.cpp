@@ -85,8 +85,8 @@ vector<string> Problem::actions(State *state){
 
 		}
 	}
-	Coordinate newPlayer(row, col + 1);
-	Coordinate newBox(row, col + 2);
+	newPlayer = Coordinate(row, col + 1);
+	newBox = Coordinate(row, col + 2);
     /*newPlayer = new Coordinate(row,col+1);
     newBox = new Coordinate(row, col+2);*/
 	iter = walls.find(newPlayer);
@@ -99,8 +99,8 @@ vector<string> Problem::actions(State *state){
 		else
 			actionList.push_back("r");
 	}
-	Coordinate newPlayer(row+1, col);
-	Coordinate newBox(row + 2, col);
+	newPlayer = Coordinate(row+1, col);
+	newBox = Coordinate(row + 2, col);
    
 	iter = walls.find(newPlayer);
 	if (iter == walls.end()) {
@@ -111,8 +111,8 @@ vector<string> Problem::actions(State *state){
 		else
 			actionList.push_back("d");
 	}
-	Coordinate newPlayer(row, col - 1);
-	Coordinate newBox(row, col - 1);
+	newPlayer = Coordinate(row, col - 1);
+	newBox = Coordinate(row, col - 1);
 	iter = walls.find(newPlayer);
 	if (iter == walls.end()) {
 		iter1 = (*boxes).find(newPlayer);
