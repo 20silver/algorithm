@@ -1,12 +1,18 @@
+#include "Coordinate.h"
+
+#include <set>
+
+using namespace std;
+
 #ifndef STATE_H
 #define STATE_H
-#include "Coordinate.h"
 class State{
 public:
-    HashSet<Coordinate> boxes;
+    set<Coordinate> boxes;
     Coordinate player;
 
-    State(HashSet<Coordinate> boxes, Coordinate player);
-    int hashcode();
+    State(set<Coordinate> boxes, Coordinate player);
+    int hashCode();
     bool equals(State object);
 };
+#endif

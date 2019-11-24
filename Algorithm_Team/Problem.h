@@ -1,21 +1,26 @@
-#ifndef PROBLEM_H
-#define PROBLEM_H
-
 #include "State.h"
 
+#include <vector>
+#include <hash_map>
+#include <set>
+#include <vector>
 
-class Problem()
-{
+using namespace std;
+
+#ifndef PROBLEM_H
+#define PROBLEM_H
+class Problem {
 public:
     State initialState;
-    HashSet<Coordinate> walls;
-    HashSet<Coordinate> goals;
-    HashMap<Coordinate, Coordinate> blocked;
+    set<Coordinate> walls;
+    set<Coordinate> goals;
+    set<Coordinate, Coordinate> blocked;
 
-    Problem(HashSet<Coordinate> walls, State initialState, HashSet<Coordinate> goals);
+    Problem(set<Coordinate> walls, State initialState, set<Coordinate> goals);
     bool goalTest(State state);
     bool deadlockTest(State state);
     vector<string> actions(State state);
-    bool setContains(HashSet<Coordinate> set, int row, int col);
+    bool setContains(set<Coordinate> set, int row, int col);
 
 };
+#endif

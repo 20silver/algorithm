@@ -1,20 +1,13 @@
-#include <iostream>
-#include <vector>
-#include <hash_map>
-#include <hash_set>
-#include <string>
 #include "Problem.h"
 
-using namespace std;
-
-Problem::Problem(HashSet<Coordinate> walls, State initialState, HashSet<Coordinate> goals){
+Problem::Problem(set<Coordinate> walls, State initialState, set<Coordinate> goals){
     this->initialState = initialState;
     this->walls = walls;
     this->goals = goals;
 }
 
-bool goalTest(State state){
-    for(Coordinate box : state->boxes){
+bool Problem::goalTest(State state){
+    for(Coordinate box : state.boxes){
         if(goals.find(box) = goals.end())
             return false;
     }
@@ -22,9 +15,9 @@ bool goalTest(State state){
 }
 
 bool Problem::deadlockTest(State state){
-    for(Coordinate box : state->boxes){
-        int row = box->row;
-        int col = box->col;
+    for(Coordinate box : state.boxes){
+        int row = box.row;
+        int col = box.col;
         if (!setContains(goals, row, col)) {
             if (setContains(walls, row-1, col)&&setContains(walls, row, col-1))
                 return true; //top & left
@@ -62,8 +55,8 @@ bool Problem::deadlockTest(State state){
 
 vector<string> Problem::actions(State state){
     vector<string> actionList = new vector<string>();
-    int row = state->layer->row;
-    int col = state->player->col;
+    int row = state.player.row;
+    int col = state.player.col;
     HashSet<Coordinate> boxes = state->boxes;
 
     Coordinate newPlayer = new Coordinate(row-1,col);
