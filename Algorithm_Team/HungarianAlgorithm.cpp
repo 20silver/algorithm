@@ -228,7 +228,7 @@ void HungarianAlgorithm::reduce() {
             costMatrix[w][j] -= min;
         }
     }
-    double min[dim];
+    vector<double> min(dim);
     for (int j = 0; j < dim; j++) {
         min[j] = inf;
     }
