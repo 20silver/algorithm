@@ -1,7 +1,7 @@
 #include "Node.h"
 
-Node::Node(State state, Node parent, int cost, string move) {
-	this-state = state;
+Node::Node(State *state, Node *parent, int cost, string move) {
+	this->state = state;
 	this->parent = parent;
 	this->cost = cost;
 	this->move = move;

@@ -1,11 +1,11 @@
 #include "Coordinate.h"
 #include "Problem.h"
 #include "Heuristics.h"
-#include "Serch.h"
+#include "Search.h"
 
-#include <hash_set>
+#include <set>
 #include <iostream>
-#include <fStream>
+#include <fstream>
 
 #ifndef SOKOBANSOLVER_H
 #define SOKOBANSOLVER_H
@@ -14,13 +14,13 @@ using namespace std;
 
 class SokobanSolver {
 private:
-	hash_set<Coordinate> walls;
-	hash_set<Coordinate> goals;
-	hash_set<Coordinate> boxes;
+	set<Coordinate> *walls;
+	set<Coordinate> *goals;
+	set<Coordinate> *boxes;
 
-	Coordinate player;
-	Problem prob;
-	Heuristics h;
+	Coordinate *player;
+	Problem *prob;
+	Heuristics *h;
 
 	int row;
 	int col;
@@ -37,18 +37,18 @@ public :
 	// 여기서부터는 그냥 헤더 파일에 정의...
 
 	string solve(char method) {
-		Search s = new Search(h);
+		Search *s = new Search(h);
 		switch (method) {
 			case 'b':
-				return s.bfs(prob);
+				return s->bfs(prob);
 			case 'd':
-				return s.dfs(prob);
+				return s->dfs(prob);
 			case 'u':
-				return s.prioritySearch(prob, 'u');
+				return s->prioritySearch(prob, 'u');
 			case 'a':
-				return s.prioritySearch(prob, 'a');
+				return s->prioritySearch(prob, 'a');
 			case 'g':
-				return s.prioritySearch(prob, 'g');
+				return s->prioritySearch(prob, 'g');
 			default:
 				return "Invalid method, please choose a valid search method.";
 		}
@@ -62,19 +62,19 @@ public :
 		return col;
 	}
 
-	hash_set<Coordinate> getWalls() {
+	set<Coordinate> getWalls() {
 		return walls;
 	}
 
-	hash_set<Coordinate> getBoxes() {
+	set<Coordinate> getBoxes() {
 		return boxes;
 	}
 
-	hash_set<Coordinate> getGoals() {
+	set<Coordinate> getGoals() {
 		return goals;
 	}
 
-	Coordinate getPlayer() {
+	Coordinate* getPlayer() {
 		return player;
 	}
 };

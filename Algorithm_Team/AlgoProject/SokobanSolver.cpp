@@ -5,9 +5,9 @@ int SokobanSolver::loadFile(string filename, char hChoice) {
 	int numPlayer = 0;
 
 	// 벽, 골, 박스 위치 저장할 hash_set 생성.
-	walls = new hash_set<Coordinate>();
-	goals = new hash_set<Coordinate>();
-	boxes = new hash_set<Coordinate>();
+	walls = new set<Coordinate>();
+	goals = new set<Coordinate>();
+	boxes = new set<Coordinate>();
 
 	// Input 파일 읽어오고...
 	ifstream inStream;
@@ -27,7 +27,7 @@ int SokobanSolver::loadFile(string filename, char hChoice) {
 				break;
 				// 목적지일 때
 			case '3':
-				goals.insert(new Coordinate(r, c));
+				goals->insert(new Coordinate(r, c));
 				break;
 				// 상자일 때
 			case '2':

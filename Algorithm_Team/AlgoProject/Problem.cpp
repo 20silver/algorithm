@@ -1,14 +1,14 @@
 #include "Problem.h"
 
-Problem::Problem(set<Coordinate> walls, State initialState, set<Coordinate> goals){
+Problem::Problem(set<Coordinate> walls, State *initialState, set<Coordinate> goals){
     this->initialState = initialState;
     this->walls = walls;
     this->goals = goals;
 }
 
-bool Problem::goalTest(State state){
+bool Problem::goalTest(State *state){
 	set<int>::iterator iter;
-    for(Coordinate box : state.boxes){
+    for(Coordinate box : state->boxes){
 		iter = goals.find(box);
         if(iter == goals.end())
             return false;
@@ -16,7 +16,7 @@ bool Problem::goalTest(State state){
     return true;
 }
 
-bool Problem::deadlockTest(State state){
+bool Problem::deadlockTest(State *state){
     for(Coordinate box : state.boxes){
         int row = box.row;
         int col = box.col;
@@ -55,7 +55,7 @@ bool Problem::deadlockTest(State state){
     return false; 
 }
 
-vector<string> Problem::actions(State state){
+vector<string> Problem::actions(State *state){
     vector<string> actionList();
     int row = state.player.row;
     int col = state.player.col;

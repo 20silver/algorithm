@@ -1,6 +1,7 @@
 #include "Search.h"
+#include <string>
 
-Search::Search(Heuristics h)
+Search::Search(Heuristics *h)
 {
     BFS = "Breadth-Frist Search";
     DFS = "Depth-First Search";
@@ -12,20 +13,22 @@ Search::Search(Heuristics h)
 }
 
  /* Implementation for breath-first search using FIFO*/
-string Search::bfs(Problem p) 
+string Search::bfs(Problem *p) 
 {
     // long startTime = 
     int totalNode = 1;
     int redundant = 0;
-    Node node(p.initialState, NULL, 0, ""); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
-    if(p.goalTest(node->state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node) 
+	void* ptr;
+	string str = "";
+    Node *node = new Node(p->initialState, (Node *)ptr, 0, str); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
+    if(p->goalTest(node->state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node) 
     return getSolution(BFS, node, totalNode, 0, 0, 0);
 
     set<State> explored;
     deque<Node> fringe;
     fringe.push_front(node);
     vector<string> actions;
-    Node child;
+    Node *child;
 
     while(!fringe.empty())
     {
@@ -34,7 +37,7 @@ string Search::bfs(Problem p)
         actions = p.actions(node->state); // get actions -> ??
         for (int i = 0; i < actions.size(); i++)
         {
-            child = getChild(p, node, actions.get(i), false);
+            child = getChild(*p, node, actions.get(i), false);
             if(child != NULL && child.state != NULL)
             {
                 totalNode ++;
@@ -57,7 +60,7 @@ string Search::bfs(Problem p)
 } // end bfs
 
 // bfs와 비슷하지만 queue대신 stack 사용 (LIFO)
-string Search::dfs(Problem p)
+string Search::dfs(Problem *p)
 {
     int totalNode = 1;
     int redundant = 0;
@@ -100,7 +103,7 @@ string Search::dfs(Problem p)
 // TODO
 // Implementation for uniform-cost search, greedy search, and A* search
 // 위 메소드들은 모두 같은 코드를 쓰는데, 우선순위 큐를 sorting하는 코드만 달라진다
-string Search::prioritySearch(Problem p, char choice)
+string Search::prioritySearch(Problem *p, char *choice)
 {
     string method = UCS;
     bool isUCS = true;

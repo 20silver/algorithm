@@ -8,9 +8,8 @@ public:
     int row;
     int col;
 	
-	Coordinate();
     Coordinate(int row, int col);
-    int hashCode();
-    bool equals(Coordinate object);
+    int hashCode() const;
+    bool equals(Coordinate *object);
 };
 #endif

@@ -7,21 +7,22 @@
 using namespace std;
 
   
-State::State(set<Coordinate> boxes, Coordinate player){
+State::State(set<Coordinate> *boxes, Coordinate *player){
     this->boxes = boxes;
     this->player = player;
 }
 
 int State::hashCode() {
     int result = 17;
-    for(Coordinate b : boxes){
-        result = 37 * result + b.hashCode();
+	set<Coordinate>::iterator it;
+	for (it = boxes->begin(); it != boxes->end(); it++) {
+        result = 37 * result + it->hashCode();
     }
-    result = 37 * result + player.hashCode();
+    result = 37 * result + player->hashCode();
     return result;
 }
 
-bool State::equals(State object){
+bool State::equals(State *object){
     /* 
 	if(object == NULL)
         return false;
@@ -30,10 +31,10 @@ bool State::equals(State object){
 	*/
     if(typeid(this) != typeid(object))
         return false;
-	State s = object;
-    if (this->hashCode() == s.hashCode())
+	State *s = object;
+    if (this->hashCode() == s->hashCode())
         return true;
-    if ((this->boxes == s.boxes) && (this->player == s.player))
+    if ((this->boxes == s->boxes) && (this->player == s->player))
         return true;
 
     return false;

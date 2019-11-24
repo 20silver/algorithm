@@ -8,11 +8,11 @@ using namespace std;
 #define STATE_H
 class State{
 public:
-    set<Coordinate> boxes;
-    Coordinate player;
+    set<Coordinate> *boxes;
+    Coordinate *player;
 
-    State(set<Coordinate> boxes, Coordinate player);
+    State(set<Coordinate> *boxes, Coordinate *player);
     int hashCode();
-    bool equals(State object);
+    bool equals(State *object);
 };
 #endif
