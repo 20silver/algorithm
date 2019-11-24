@@ -20,24 +20,25 @@ string Search::bfs(Problem *p)
     int redundant = 0;
 	void* ptr = nullptr;
 	string str = "";
-    Node* node = new Node(p->initialState, (Node *)ptr, 0, str); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
-    if(p->goalTest(node->state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node) 
-    return getSolution(BFS, node, totalNode, 0, 0, 0);
+    Node node(p->initialState, (Node *)ptr, 0, str); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
+    if(p->goalTest(node.state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node)
+    return getSolution(BFS, &node, totalNode, 0, 0, 0);
 
     set<State*> explored;
-    deque<Node*> fringe;
+    deque<Node> fringe;
     fringe.push_front(node);
     vector<string> actions;
     Node* child;
 
     while(!fringe.empty())
     {
-        node = fringe.pop_front(); // 맨 앞 노드 가져오기
-        explored.insert(node->state); // add node.STATE to explored
-        actions = p->actions(node->state); // get actions -> ??
+        node = fringe.front(); // 맨 앞 노드 가져오기
+        fringe.pop_front();
+        explored.insert(node.state); // add node.STATE to explored
+        actions = p->actions(node.state); // get actions -> ??
         for (int i = 0; i < actions.size(); i++)
         {
-            child = getChild(p, node, actions[i], false);
+            child = getChild(p, &node, actions[i], false);
             if(child != nullptr && child->state != nullptr)
             {
                 totalNode ++;
@@ -50,13 +51,13 @@ string Search::bfs(Problem *p)
                     if(p->goalTest(child->state))
                         return solution;
                     if(!p->deadlockTest(child->state)) // check deadlock state
-                        fringe.push_front(child);
+                        fringe.push_front(*child);
                 }
                 else redundant ++;
             }
         }
     }
-    return getSolution(BFS, NULL, totalNode, redundant, fringe.size(), explored.size());
+    return getSolution(BFS, nullptr, totalNode, redundant, fringe.size(), explored.size());
 } // end bfs
 
 // bfs와 비슷하지만 queue대신 stack 사용 (LIFO)
@@ -66,21 +67,22 @@ string Search::dfs(Problem *p)
     int redundant = 0;
     void* ptr = nullptr;
     string str = "";
-    Node *node = new Node(p->initialState, (Node *)ptr, 0, str);
-    if(p->goalTest(node->state))
-        return getSolution(DFS, node, totalNode, 0, 0, 0);
+    Node node(p->initialState, (Node *)ptr, 0, str);
+    if(p->goalTest(node.state))
+        return getSolution(DFS, &node, totalNode, 0, 0, 0);
     
     set<State*> explored;
-    deque<Node*> fringe;
+    deque<Node> fringe;
     fringe.push_back(node); 
     while(!fringe.empty())
     {
-        node = fringe.pop_back(); // 첫 번째 노드 꺼내기
-        explored.insert(node->state);
-        vector<string> actions = p->actions(node->state); // get actions
+        node = fringe.back(); // 첫 번째 노드 꺼내기
+        fringe.pop_back();
+        explored.insert(node.state);
+        vector<string> actions = p->actions(node.state); // get actions
         for (int i = 0; i < actions.size(); i++)
         {
-            Node* child = getChild(p, node, actions[i], false);
+            Node* child = getChild(p, &node, actions[i], false);
             if(child != nullptr && child->state != nullptr)
             {
                 totalNode++;
@@ -93,7 +95,7 @@ string Search::dfs(Problem *p)
                     if(p->goalTest(child->state))
                         return solution;
                     if(!p->deadlockTest(child->state))
-                        fringe.push_back(child);
+                        fringe.push_back(*child);
                 }
                 else redundant ++;
             }
@@ -133,7 +135,7 @@ string Search::getSolution(string method, Node* n, int totalNode, int redundant,
     "\na) Number of nodes generated: " + to_string(totalNode) +
     "\nb) Number of nodes containing states that were generated previously: " + to_string(redundant) +
     "\nc) Number of nodes on the fringe when termination occurs: " + to_string(fringeSize) +
-    "\nd) Number of nodes on the explored list (if there is one) when termination occurs: " + to_string(exploredSize) +
+    "\nd) Number of nodes on the explored list (if there is one) when termination occurs: " + to_string(exploredSize);
 
     return result;
 } // end getSolution
