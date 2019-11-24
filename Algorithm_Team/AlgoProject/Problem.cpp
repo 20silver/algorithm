@@ -107,8 +107,7 @@ vector<string> Problem::actions(State *state){
 		iter1 = (*boxes).find(newPlayer);
 		iter2 = (*boxes).find(newBox);
 		iter3 = walls.find(newBox);
-		if (iter1 != (*boxes).end() && iter2 != (*boxes).end() || iter3 != walls.end()))
-			;
+		if (iter1 != (*boxes).end() && iter2 != (*boxes).end() || iter3 != walls.end());
 		else
 			actionList.push_back("d");
 	}
@@ -119,8 +118,7 @@ vector<string> Problem::actions(State *state){
 		iter1 = (*boxes).find(newPlayer);
 		iter2 = (*boxes).find(newBox);
 		iter3 = walls.find(newBox);
-		if (iter1 != (*boxes).end() && iter2 != (*boxes).end() || iter3 != walls.end()))
-			;
+		if (iter1 != (*boxes).end() && iter2 != (*boxes).end() || iter3 != walls.end());
 		else
 			actionList.push_back("l");
 	}
