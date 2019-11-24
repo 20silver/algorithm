@@ -1,3 +1,6 @@
+#ifndef SOKOBANSOLVER_H
+#define SOKOBANSOLVER_H
+
 #include "Coordinate.h"
 #include "Problem.h"
 #include "Heuristics.h"
@@ -7,8 +10,7 @@
 #include <iostream>
 #include <fstream>
 
-#ifndef SOKOBANSOLVER_H
-#define SOKOBANSOLVER_H
+
 
 using namespace std;
 
@@ -29,12 +31,12 @@ public :
 	SokobanSolver() {}
 
 	
-	// ¹®Á¦ ¹Þ¾Æ¿À±â.
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½.
 	int loadFile(string filename, char hChoice);
 
 
 
-	// ¿©±â¼­ºÎÅÍ´Â ±×³É Çì´õ ÆÄÀÏ¿¡ Á¤ÀÇ...
+	// ï¿½ï¿½ï¿½â¼­ï¿½ï¿½ï¿½Í´ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½...
 
 	string solve(char method) {
 		Search *s = new Search(h);

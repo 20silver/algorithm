@@ -1,14 +1,15 @@
+#ifndef PROBLEM_H
+#define PROBLEM_H
+
 #include "State.h"
 
 #include <vector>
-#include <hash_map>
 #include <set>
 #include <vector>
 
 using namespace std;
 
-#ifndef PROBLEM_H
-#define PROBLEM_H
+
 class Problem {
 public:
     State *initialState;

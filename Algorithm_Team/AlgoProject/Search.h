@@ -1,3 +1,6 @@
+#ifndef SEARCH_H
+#define SEARCH_H
+
 #include <vector>
 #include <set>
 #include <list>
@@ -30,3 +33,5 @@ class Search {
         string dfs(Problem *p);
         string prioritySearch(Problem *p, char choice);
 };
+
+#endif

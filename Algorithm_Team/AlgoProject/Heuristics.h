@@ -1,3 +1,6 @@
+#ifndef HEURISTICS_H
+#define HEURISTICS_H
+
 #include "Coordinate.h"
 #include "HungarianAlgorithm.h"
 #include "State.h"
@@ -13,14 +16,14 @@ class Heuristics {
 private:
 	set<Coordinate> *goals;
 	vector<vector<double>> cost;
-	HungarianAlgorithm *h;			// 'e' : À¯Å¬¸®µð¾È, 'm' : ¸ÇÇÏÅº. µÑ Áß¿¡ ÇÏ³ª. ÀÌ °ª¿¡ µû¶ó °Å¸® °è»ê ¹æ¹ýÀÌ ´Þ¶óÁü.
+	HungarianAlgorithm *h;			// 'e' : ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ï¿½, 'm' : ï¿½ï¿½ï¿½ï¿½Åº. ï¿½ï¿½ ï¿½ß¿ï¿½ ï¿½Ï³ï¿½. ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¶ï¿½ï¿½ï¿½.
 	char hChoice;
 
-	// ¸ÇÇÏÅº °Å¸® °è»ê °ø½Ä
+	// ï¿½ï¿½ï¿½ï¿½Åº ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int manhattan(Coordinate *c1, Coordinate *c2);
-	// À¯Å¬¸®µð¾ð °Å¸® °è»ê °ø½Ä
+	// ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	double euclidean(Coordinate *c1, Coordinate *c2);
-	// À§ÀÇ µÎ ¹æ¹ýÀ» »ç¿ëÇØ¼­ °Å¸® °è»ê.
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½.
 	double getDist(Coordinate *obj, set<Coordinate> *sets, string method);
 
 public:
@@ -30,3 +33,5 @@ public:
 
 	double getHeuristic(State *state);
 };
+
+#endif

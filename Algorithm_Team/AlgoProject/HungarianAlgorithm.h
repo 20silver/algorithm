@@ -1,3 +1,6 @@
+#ifndef HUNGARIANALGORITHM_H
+#define HUNGARIANALGORITHM_H
+
 #include <vector>
 #include <algorithm>
 
@@ -33,3 +36,5 @@ class HungarianAlgorithm {
         void reduce();
         void updateLabeling(double slack);
 };
+
+#endif

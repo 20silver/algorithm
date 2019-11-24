@@ -1,8 +1,10 @@
+#ifndef COORDINATE_H
+#define COORDINATE_H
+
 #include <iostream>
 #include <cstdlib>
 
-#ifndef COORDINATE_H
-#define COORDINATE_H
+
 class Coordinate {
 public:
     int row;
