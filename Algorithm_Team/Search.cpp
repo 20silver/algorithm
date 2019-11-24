@@ -17,8 +17,8 @@ string Search::bfs(Problem p)
     // long startTime = 
     int totalNode = 1;
     int redundant = 0;
-    Node node = new Node(p.initialState, NULL, 0, ""); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
-    if(p.goalTest(node.state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node) 
+    Node node(p->initialState, NULL, 0, ""); // //node with state=problem.INITIAL-STATE, PATH-COST = 0
+    if(p->goalTest(node->state)) // if problem.GOAL-TEST(node.state) then return SOLUTION(node) 
     return getSolution(BFS, node, totalNode, 0, 0, 0);
 
     set<State> explored;
@@ -30,8 +30,8 @@ string Search::bfs(Problem p)
     while(!fringe.empty())
     {
         node = fringe.pop_front(); // 맨 앞 노드 가져오기
-        explored.insert(node.state) // add node.STATE to explored 
-        actions = p.actions(node.state); // get actions -> ??
+        explored.insert(node->state) // add node.STATE to explored 
+        actions = p.actions(node->state); // get actions -> ??
         for (int i = 0; i < actions.size(); i++)
         {
             child = getChild(p, node, actions.get(i), false);
@@ -44,9 +44,9 @@ string Search::bfs(Problem p)
                 if((it_s == explored.end()) && (it == fringe.end()) /*!explored.contains(child.state)*//* !fringe.contains(child) */) 
                 {
                     string solution = getSolution(BFS, child, totalNode, redundant, fringe.size(), explored.size());
-                    if(p.goalTest(child.state))
+                    if(p.goalTest(child->state))
                         return solution;
-                    if(!p.deadlockTest(child.state)) // check deadlock state
+                    if(!p.deadlockTest(child->state)) // check deadlock state
                         fringe.push_front(child);
                 }
                 else redundant ++;
@@ -61,8 +61,8 @@ string Search::dfs(Problem p)
 {
     int totalNode = 1;
     int redundant = 0;
-    Node node = new Node(p.initialState, NULL, 0, "");
-    if(p.goalTest(node.state))
+    Node node(p->initialState, NULL, 0, "");
+    if(p->goalTest(node->state))
         return getSolution(DFS, node, totlaNode, 0, 0, 0);
     
     set<State> explored;
@@ -71,7 +71,7 @@ string Search::dfs(Problem p)
     while(!fringe.empty())
     {
         node = fringe.pop_back(); // 첫 번째 노드 꺼내기
-        explored.insert(node.state);
+        explored.insert(node->state);
         vector<string> actions = p.actions(node.state); // get actions
         for (int i = 0; i < actions.size(); i++)
         {

@@ -1,4 +1,4 @@
-/*https://github.com/jameshong92/sokoban-solver/blob/master/src/Search.java*/
+/* https://github.com/jameshong92/sokoban-solver/blob/master/src/Search.java*/
 
 #include <vector>
 #include <set>
