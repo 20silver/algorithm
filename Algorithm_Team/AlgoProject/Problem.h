@@ -16,7 +16,7 @@ public:
     set<Coordinate> goals;
     set<Coordinate, Coordinate> blocked;
 
-    Problem(set<Coordinate> walls, State *initialState, set<Coordinate> goals);
+    Problem(set<Coordinate> *walls, State *initialState, set<Coordinate> *goals);
     bool goalTest(State *state);
     bool deadlockTest(State *state);
     vector<string> actions(State *state);

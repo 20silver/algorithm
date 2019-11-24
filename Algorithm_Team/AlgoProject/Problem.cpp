@@ -1,15 +1,16 @@
 #include "Problem.h"
 
-Problem::Problem(set<Coordinate> walls, State *initialState, set<Coordinate> goals){
+Problem::Problem(set<Coordinate> *walls, State *initialState, set<Coordinate> *goals){
     this->initialState = initialState;
-    this->walls = walls;
-    this->goals = goals;
+    this->walls = *walls;
+    this->goals = *goals;
 }
 
 bool Problem::goalTest(State *state){
-	set<int>::iterator iter;
-    for(Coordinate box : state->boxes){
-		iter = goals.find(box);
+	set<Coordinate>::iterator iter;
+	set<Coordinate>::iterator it;
+	for(it = state->boxes->begin(); it != state ->boxes->end();it++){
+		iter = goals.find(*it);
         if(iter == goals.end())
             return false;
     }
@@ -17,9 +18,10 @@ bool Problem::goalTest(State *state){
 }
 
 bool Problem::deadlockTest(State *state){
-    for(Coordinate box : state.boxes){
-        int row = box.row;
-        int col = box.col;
+	set<Coordinate>::iterator it;
+	for(it = state->boxes->begin(); it!= state->boxes->end(); it++){
+        int row = (*it).row;
+        int col = (*it).col;
         if (!setContains(goals, row, col)) {
             if (setContains(walls, row-1, col)&&setContains(walls, row, col-1))
                 return true; //top & left
@@ -57,23 +59,23 @@ bool Problem::deadlockTest(State *state){
 
 vector<string> Problem::actions(State *state){
     vector<string> actionList();
-    int row = state.player.row;
-    int col = state.player.col;
-    HashSet<Coordinate> boxes = state->boxes;
-	set<int>::iterator iter;
-	set<int>::iterator iter1;
-	set<int>::iterator iter2;
-	set<int>::iterator iter3;
+    int row = state->player->row;
+    int col = state->player->col;
+    set<Coordinate> *boxes = state->boxes;
+	set<Coordinate>::iterator iter;
+	set<Coordinate>::iterator iter1;
+	set<Coordinate>::iterator iter2;
+	set<Coordinate>::iterator iter3;
 
     Coordinate newPlayer(row-1,col);
     Coordinate newBox(row-2, col);
-	iter = walls.find(newPlayer)
+	iter = walls.find(newPlayer);
 	if (iter == walls.end()) {
-		iter1 = boxes.find(newPlayer);
-		iter2 = boxes.find(newBox);
+		iter1 = (*boxes).find(newPlayer);
+		iter2 = (*boxes).find(newBox);
 		iter3 = walls.find(newBox);
-		if (iter1 != boxes.end() && (iter2 != boxes.end() || iter3 != walls.end())
-			;
+		if (iter1 != (*boxes).end() && (iter2 != (*boxes).end() || iter3 != walls.end())
+			
 		else
 			actionList.push_back("u");
 	}
