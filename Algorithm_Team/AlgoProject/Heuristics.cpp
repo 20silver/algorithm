@@ -1,31 +1,31 @@
 #include "Heuristics.h"
 
 
-Heuristics::Heuristics(hash_set<Coordinate> goals, char hChoice) {
+Heuristics::Heuristics(set<Coordinate> *goals, char hChoice) {
 	this->goals = goals;
 	this->hChoice = hChoice;
-	this->cost = new double[goals.size()][goals.size()];
-	h = new HungarianAlgorithm(cost.size());
+	this->cost = new double[3][3];
+	h = new HungarianAlgorithm(9);			// 원래 cost.size() 들어가는데.. 최대 3x3 = 9 니까 9로 줘도 괜찮지 않을까..? ㅎ ㅎ
 }
 
 
 // 맨하탄 거리 계산 공식
-int Heuristics::manhattan(Coordinate c1, Coordinate c2) {
-	return abs(c1.row - c2.row) + abs(c1.col - c2.col);
+int Heuristics::manhattan(Coordinate *c1, Coordinate *c2) {
+	return abs(c1->row - c2->row) + abs(c1->col - c2->col);
 }
 
 
 // 유클리디안 거리 계산 공식
-double Heuristics::euclidean(Coordinate c1, Coordinate c2) {
-	return sqrt((double)((c1.row - c2.row) * (c1.row - c2.row) + (c1.col - c2.col) * (c1.col - c2.col)));
+double Heuristics::euclidean(Coordinate *c1, Coordinate *c2) {
+	return sqrt((double)((c1->row - c2->row) * (c1->row - c2->row) + (c1->col - c2->col) * (c1->col - c2->col)));
 }
 
 
 
 
-double Heuristics::calculate(State s, string method) {
-	hash_set<Coordinate> boxes = s->boxes;			// 인자로 받은 state 에서 현재 박스들을 받아옴.
-	Coordinate player = s->player;					// 인자로 받은 state 에서 현재 플레이어를 받아옴.
+double Heuristics::calculate(State *s, string method) {
+	set<Coordinate>* boxes = s->boxes;			// 인자로 받은 state 에서 현재 박스들을 받아옴.
+	Coordinate* player = s->player;					// 인자로 받은 state 에서 현재 플레이어를 받아옴.
 
 	double sum = 0;
 
@@ -34,8 +34,9 @@ double Heuristics::calculate(State s, string method) {
 	sum += playerMin;
 
 	// 각 박스 별로, 자신과 가장 가까운 Goal 과의 거리를 sum 에 더함.
-	for (Coordinate b : boxes) {
-		double boxMin = getDist(b, goals, method);
+	set<Coordinate>::iterator it;
+	for (it = boxes->begin(); it != boxes->end(); it++) {
+		double boxMin = getDist(it, goals, method);
 		sum += boxMin;
 	}
 
@@ -44,18 +45,18 @@ double Heuristics::calculate(State s, string method) {
 
 
 
-double Heuristics::getDist(Coordinate obj, hash_set<Coordinate> sets, string method) {
+double Heuristics::getDist(const Coordinate *obj, set<Coordinate> *sets, string method) {
 	double minDist = 1000000;
 
-	//For each coordinate in a set, calculate the distance according to given heuristic choice
-	for (Coordinate c : sets) {
+	set<Coordinate>::iterator it;
+	for (it = sets->begin(); it != sets->end(); it++) {
 		double dist;
 		//  맨하탄 공식으로 거리를 구한다면...
 		if (method == "m")
-			dist = manhattan(obj, c);
+			dist = manhattan(obj, it);
 		// 아닐 경우엔 유클리디언 공식으로 구함.
 		else
-			dist = euclidean(obj, c);
+			dist = euclidean(obj, it);
 		
 		if (dist < minDist)
 			minDist = dist;
@@ -66,7 +67,7 @@ double Heuristics::getDist(Coordinate obj, hash_set<Coordinate> sets, string met
 
 
 
-double Heuristics::getHeuristic(State state) {
+double Heuristics::getHeuristic(State *state) {
 
 	if (hChoice == 'm')
 		return calculate(state, "m");
@@ -74,11 +75,12 @@ double Heuristics::getHeuristic(State state) {
 		return calculate(state, "e");
 
 	int i = 0;
-	for (Coordinate box : state.boxes) {
+	set<Coordinate>::iterator it;
+	for (it = state->boxes->begin(); it != state->boxes->end(); it++) {
 		int j = 0;
-		double playerCost = manhattan(state.player, box);
-		for (Coordinate goal : goals) {
-			cost[i][j] = manhattan(box, goal);
+		double playerCost = manhattan(state->player, it);
+		for (auto goal : goals) {
+			cost[i][j] = manhattan(it, goal);
 			cost[i][j] += playerCost;
 			j++;
 		}

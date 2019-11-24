@@ -62,15 +62,15 @@ public :
 		return col;
 	}
 
-	set<Coordinate> getWalls() {
+	set<Coordinate>* getWalls() {
 		return walls;
 	}
 
-	set<Coordinate> getBoxes() {
+	set<Coordinate>* getBoxes() {
 		return boxes;
 	}
 
-	set<Coordinate> getGoals() {
+	set<Coordinate>* getGoals() {
 		return goals;
 	}
 

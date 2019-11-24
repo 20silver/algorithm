@@ -21,21 +21,22 @@ int SokobanSolver::loadFile(string filename, char hChoice) {
 		// row 하나 읽기
 		for (int c = 0; c < col; c++) {
 			char obj = line[c];
+			Coordinate coord = Coordinate(r, c);
 			switch (obj) {
 				// 아무것도 없는 빈 공간일 때.
 			case '4':
 				break;
 				// 목적지일 때
 			case '3':
-				goals->insert(new Coordinate(r, c));
+				goals->insert(coord);
 				break;
 				// 상자일 때
 			case '2':
-				boxes.insert(new Coordinate(r, c));
+				boxes->insert(coord);
 				break;
 				// 벽일 때
 			case '1':
-				walls.insert(new Coordinate(r, c));
+				walls->insert(coord);
 				break;
 				// 벽 안쪽의 캐릭터가 움직일 수 있는 공간일 때
 			case '0':
@@ -51,7 +52,7 @@ int SokobanSolver::loadFile(string filename, char hChoice) {
 	}
 
 	prob = new Problem(walls, new State(boxes, player), goals);
-	h = new Heuristics(goals, hChoice);
+	h = new Heuristics(goals*, hChoice);
 
 	return numPlayer;
 }
