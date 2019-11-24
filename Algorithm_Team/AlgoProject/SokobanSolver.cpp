@@ -52,7 +52,7 @@ int SokobanSolver::loadFile(string filename, char hChoice) {
 	}
 
 	prob = new Problem(walls, new State(boxes, player), goals);
-	h = new Heuristics(goals*, hChoice);
+	h = new Heuristics(goals, hChoice);
 
 	return numPlayer;
 }

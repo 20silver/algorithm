@@ -36,7 +36,7 @@ double Heuristics::calculate(State *s, string method) {
 	// 각 박스 별로, 자신과 가장 가까운 Goal 과의 거리를 sum 에 더함.
 	set<Coordinate>::iterator it;
 	for (it = boxes->begin(); it != boxes->end(); it++) {
-		double boxMin = getDist(it, goals, method);
+		double boxMin = getDist(*it, goals, method);
 		sum += boxMin;
 	}
 
