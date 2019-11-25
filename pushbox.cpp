@@ -84,11 +84,11 @@ void Level(int n) { // 숫자 - 스테이지 변환
 					break;
 				case 3: //목적지
 					mvaddch(y + 4, x + 10, '-' | COLOR_PAIR(4));
-					obj[1].ozn = mvinch(y + 4, x + 10);
-					obj[1].yPos = y + 4;
-					obj[1].xPos = x + 10;
-					obj[1].zn = 'x';
-					mvaddch(obj[1].yPos, obj[1].xPos, obj[1].zn | COLOR_PAIR(3));
+					obj[9].ozn = mvinch(y + 4, x + 10);
+					obj[9].yPos = y + 4;
+					obj[9].xPos = x + 10;
+					obj[9].zn = 'x';
+					mvaddch(obj[9].yPos, obj[9].xPos, obj[9].zn | COLOR_PAIR(3));
 					break;
 				case 4: mvaddch(y + 4, x + 10, '+' | COLOR_PAIR(6)); break; // 벽 외부
 				case 5: // 플레이어
