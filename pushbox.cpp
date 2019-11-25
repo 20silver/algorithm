@@ -5,10 +5,11 @@
  * 스테이지를 완료했을 때 다음 스테이지로 넘어가기
  *벽이나 상자에 막혔을 때 step수 증가하지 않도록 하기
 */
-
+#include <iostream>
 #include <ncurses.h>
 #include <fstream>
 #include <stdlib.h>
+#include <string>
 
 using namespace std;
 
@@ -26,19 +27,26 @@ int wbox = 0, lev = 1, step = 0, push = 0;
 
 void levList(int *h, int *w, int *array, int y, int x, int n) {
 	// fstream으로 파일 불러오는 것으로 수정
-	if (n == 1) {
-		*h = 7;
-		*w = 6;
-		int map0[7][6] = {
-			{1,1,1,1,1,4},
-			{1,0,0,0,1,4},
-			{1,3,3,3,1,4},
-			{1,2,2,2,1,1},
-			{1,0,5,0,0,1},
-			{1,0,0,0,0,1},
-			{1,1,1,1,1,1}};
-		*array = map0[y][x];
-	}
+	ifstream stage;
+	char stagenum = '0' + n; //stage num int to char
+	//stage.open("stage/" + to_string(n) + ".txt");
+	//to_string()이 무슨 일인지 되지 않습니다
+    stage.open("stage/1.txt"); //n에 따라 파일 이름 변경 필요.
+    if(stage.fail())
+    {
+        printf("파일 없음");
+    }
+    stage >> *h >> *w;
+	int map0[*h][*w];
+    for (int i = 0; i < *h; i++) {
+        for (int j = 0; j < *w; j++) {
+            int n;
+            stage >> n;
+            map0[i][j] = n;
+        }
+    }
+    stage.close();
+	*array = map0[y][x];
 }
 
 void pallete() { // 색 지정
