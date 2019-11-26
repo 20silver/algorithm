@@ -29,7 +29,7 @@ int wbox = 0, lev = 1, step = 0, push = 0;
 void levList(int *h, int *w, int *array, int y, int x, int n) {
 	// fstream으로 파일 불러오는 것으로 수정
 	char cstagenum = '0' + n; //stage num int to char
-	char sstagenum[11] = {'s', 't', 'a', 'g', 'e', '/', cstagenum, '.', 't', 'x', 't'};
+	char sstagenum[12] = {'s', 't', 'a', 'g', 'e', '/', cstagenum, '.', 't', 'x', 't', '\0'};
 	ifstream stage(sstagenum);
     if(stage.fail())
     {
