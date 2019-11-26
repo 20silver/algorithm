@@ -1,6 +1,5 @@
 /*
  * < 구현해야 할 목록 >
- * fstream으로 파일 불러오기
  * push 구현하기
  * 스테이지를 완료했을 때 다음 스테이지로 넘어가기
  * 벽이나 상자에 막혔을 때 step수 증가하지 않도록 하기
@@ -125,8 +124,8 @@ void Play(int input) {
 
 	switch(input) { // 방향키 제어 // push 구현
 		case KEY_UP:
-			step++;
 			if (up != 35) {
+				step++;
 				if (up == 64 && (oup == 45 || oup == 120)) {
 					obj[0].yPos -= 1;
 					// 상자와 플레이어가 겹치지 않도록-----------
@@ -135,12 +134,13 @@ void Play(int input) {
 					}
 					//-------------------------------------------
 				} else if (up != 64) obj[0].yPos -= 1;
+				else step--;
 			}
 			Step_Push(step, push);
 			break;
 		case KEY_DOWN:
-			step++;
 			if (dw != 35) {
+				step++;
 				if (dw == 64 && (odw == 45 || odw == 120)) {
 					obj[0].yPos += 1;
 					for (int o = 1; o <= wbox; o++) {
@@ -149,12 +149,13 @@ void Play(int input) {
 						}
 					}
 				} else if (dw != 64) obj[0].yPos += 1;
+				else step--;
 			}
 			Step_Push(step, push);
 			break;
 		case KEY_LEFT:
-			step++;
 			if (lf != 35) {
+				step++;
 				if (lf == 64 && (olf == 45 || olf == 120)) {
 					obj[0].xPos -= 1;
 					for (int o = 1; o <= wbox; o++) {
@@ -163,13 +164,14 @@ void Play(int input) {
 						}
 					}
 				} else if (lf != 64) obj[0].xPos -= 1;
+				else step--;
 			}
 			Step_Push(step, push);
 			break;
 
 		case KEY_RIGHT:
-			step++;
 			if (rg != 35) {
+				step++;
 				if (rg == 64 && (org == 45 || org == 120)) {
 					obj[0].xPos += 1;
 					for (int o = 1; o <= wbox; o++) {
@@ -178,6 +180,7 @@ void Play(int input) {
 							}
 					}
 				} else if (rg != 64) obj[0].xPos += 1;
+				else step--;
 			}
 			Step_Push(step, push);
 			break;
