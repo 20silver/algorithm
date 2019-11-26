@@ -3,7 +3,7 @@
  * fstream으로 파일 불러오기
  * push 구현하기
  * 스테이지를 완료했을 때 다음 스테이지로 넘어가기
- *벽이나 상자에 막혔을 때 step수 증가하지 않도록 하기
+ * 벽이나 상자에 막혔을 때 step수 증가하지 않도록 하기
 */
 #include <iostream>
 #include <ncurses.h>
@@ -198,7 +198,7 @@ void Play(int input) {
 		move(obj[0].yPos, obj[0].xPos);
 	} else restart = FALSE;
 
-		// 상자의 위치와 목적지의 위치가 모두 일치하는 경우 다음 레벨로 넘어감
+
 }
 /*	// 상자의 위치와 목적지의 위치가 모두 일치하는 경우 다음 레벨로 넘어감
 int same = 1;
