@@ -2,7 +2,6 @@
  * < 구현해야 할 목록 >
  * push 구현하기
  * 스테이지를 완료했을 때 다음 스테이지로 넘어가기
- * 벽이나 상자에 막혔을 때 step수 증가하지 않도록 하기
  * left = l, right = r, up = u, down = d를 string으로 입력받았을 때, 그 방향으로 움직이도록(자동화)
 */
 #include <iostream>
