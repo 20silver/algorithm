@@ -120,6 +120,7 @@ void Play(int input) {
 	for(int o = 0; o <= wbox; o++) { mvaddch(obj[o].yPos, obj[o].xPos, obj[o].ozn);}
 
 	switch(input) { // 방향키 제어
+		case 'w':
 		case KEY_UP:
 			if (up != 35) {
 				step++;
@@ -138,7 +139,7 @@ void Play(int input) {
 			}
 			Step_Push(step, push);
 			break;
-		
+		case 's':
 		case KEY_DOWN:
 			if (dw != 35) {
 				step++;
@@ -155,7 +156,7 @@ void Play(int input) {
 			}
 			Step_Push(step, push);
 			break;
-
+		case 'a':
 		case KEY_LEFT:
 			if (lf != 35) {
 				step++;
@@ -172,7 +173,7 @@ void Play(int input) {
 			}
 			Step_Push(step, push);
 			break;
-
+		case 'd':
 		case KEY_RIGHT:
 			if (rg != 35) {
 				step++;
