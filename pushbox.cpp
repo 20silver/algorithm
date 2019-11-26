@@ -18,10 +18,10 @@ struct Object {
 	chtype ozn;
 };
 
-#define N 10
+#define N 30
 struct Object obj[N] = {};
 
-int wbox = 0, lev = 1, step = 0, push = 0;
+int wbox = 0, lev = 1, step = 0, push = 0, goal = 19;
 
 void levList(int *h, int *w, int *array, int y, int x, int n) {
 	char cstagenum = '0' + n; //stage num int to char
@@ -60,7 +60,7 @@ void Level(int n) { // 숫자 - 스테이지 변환
 	mvprintw(2, 1, "Move- Arrow, Restart-R, Exit-Q");
 	mvprintw(3, 8, "Step: %d, Push: %d", step, push);
 	int x = 0, y = 0, h = 1, w = 1, map;
-	wbox = 0;
+	wbox = 0; goal = 19;
 
 	for (y = 0; y < h; y++) {
 		for (x = 0; x < w; x++) {
@@ -78,12 +78,13 @@ void Level(int n) { // 숫자 - 스테이지 변환
 					mvaddch(obj[wbox].yPos, obj[wbox].xPos, obj[wbox].zn | COLOR_PAIR(5));
 					break;
 				case 3: //목적지
+					goal += 1;
 					mvaddch(y + 4, x + 10, '-' | COLOR_PAIR(4));
-					obj[9].ozn = mvinch(y + 4, x + 10);
-					obj[9].yPos = y + 4;
-					obj[9].xPos = x + 10;
-					obj[9].zn = 'x';
-					mvaddch(obj[9].yPos, obj[9].xPos, obj[9].zn | COLOR_PAIR(3));
+					obj[goal].ozn = mvinch(y + 4, x + 10);
+					obj[goal].yPos = y + 4;
+					obj[goal].xPos = x + 10;
+					obj[goal].zn = 'x';
+					mvaddch(obj[goal].yPos, obj[goal].xPos, obj[goal].zn | COLOR_PAIR(3));
 					break;
 				case 4: mvaddch(y + 4, x + 10, '+' | COLOR_PAIR(6)); break; // 벽 외부
 				case 5: // 플레이어
@@ -104,10 +105,25 @@ void Step_Push(int step, int push) {
 	mvprintw(3, 8, "Step: %d, Push: %d", step, push);
 }
 
+void nextStage() {
+	int same = 0; goal = 19;
+	for(int o = 1; o <= wbox; o++) {
+		goal++;
+		if ((obj[goal].yPos == obj[o].yPos) && (obj[goal].xPos == obj[o].xPos)) {
+			same++;
+			if (same == wbox) {
+				lev += 1;
+				step = 0; push = 0;
+				Level(lev);
+			}
+		}
+	}
+}
+
 void Play(int input) {
 	bool restart = FALSE;
-	int ymove = 0, xmove = 0;
-	chtype up, lf, dw, rg, oup, olf, odw, org, way = 35, wayobj;
+
+	chtype up, lf, dw, rg, oup, olf, odw, org;
 	up = (mvinch(obj[0].yPos - 1, obj[0].xPos) & A_CHARTEXT);
 	lf = (mvinch(obj[0].yPos, obj[0].xPos - 1) & A_CHARTEXT);
 	dw = (mvinch(obj[0].yPos + 1, obj[0].xPos) & A_CHARTEXT);
@@ -120,30 +136,76 @@ void Play(int input) {
 	for(int o = 0; o <= wbox; o++) { mvaddch(obj[o].yPos, obj[o].xPos, obj[o].ozn);}
 
 	switch(input) { // 방향키 제어
-		case 'w':
 		case KEY_UP:
-			ymove = -1;
-			way = up;
-			wayobj = oup;
+			if (up != 35) {
+				step++;
+				if (up == 64 && (oup == 45 || oup == 120)) {
+					obj[0].yPos -= 1;
+					// 상자와 플레이어가 겹치지 않도록-----------
+					for (int o = 1; o <= wbox; o++) {
+						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
+							obj[o].yPos -= 1;
+							push++;
+						}
+					}
+					//-------------------------------------------
+				} else if (up != 64) obj[0].yPos -= 1;
+				else step--;
+			}
+			Step_Push(step, push);
 			break;
-		case 's':
+
 		case KEY_DOWN:
-			ymove = 1;
-			way = dw;
-			wayobj = odw;
+			if (dw != 35) {
+				step++;
+				if (dw == 64 && (odw == 45 || odw == 120)) {
+					obj[0].yPos += 1;
+					for (int o = 1; o <= wbox; o++) {
+						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)){
+							obj[o].yPos += 1;
+							push++;
+						}
+					}
+				} else if (dw != 64) obj[0].yPos += 1;
+				else step--;
+			}
+			Step_Push(step, push);
 			break;
-		case 'a':
+
 		case KEY_LEFT:
-			xmove = -1;
-			way = lf;
-			wayobj = olf;
+			if (lf != 35) {
+				step++;
+				if (lf == 64 && (olf == 45 || olf == 120)) {
+					obj[0].xPos -= 1;
+					for (int o = 1; o <= wbox; o++) {
+						if ((obj[0].yPos == obj[o].yPos) &&  (obj[0].xPos == obj[o].xPos)) {
+							obj[o].xPos -= 1;
+							push++;
+						}
+					}
+				} else if (lf != 64) obj[0].xPos -= 1;
+				else step--;
+			}
+			Step_Push(step, push);
 			break;
-		case 'd':
+
 		case KEY_RIGHT:
-			xmove = 1;
-			way = rg;
-			wayobj = org;
+			if (rg != 35) {
+				step++;
+				if (rg == 64 && (org == 45 || org == 120)) {
+					obj[0].xPos += 1;
+					for (int o = 1; o <= wbox; o++) {
+							if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
+								obj[o].xPos += 1;
+								push++;
+							}
+					}
+				} else if (rg != 64) obj[0].xPos += 1;
+				else step--;
+			}
+			Step_Push(step, push);
 			break;
+
 		case 'r':
 		case 'R':
 			restart = TRUE;
@@ -153,24 +215,6 @@ void Play(int input) {
 		default:
 			break;
 	}
-	if (way != 35) {
-		step++;
-		if (way == 64 && (wayobj == 45 || wayobj == 120)) {
-			obj[0].xPos += xmove;
-			obj[0].yPos += ymove;
-			for (int o = 1; o <= wbox; o++) {
-				if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
-					obj[o].xPos += xmove;
-					obj[o].yPos += ymove;
-					push++;
-				}
-			}
-		} else if (way != 64){
-			obj[0].xPos += xmove;
-			obj[0].yPos += ymove;
-		} else step--;
-	}
-	Step_Push(step, push);
 
 	if (!restart) {
 		for (int o = 0; o <= wbox; o++) {
@@ -178,9 +222,8 @@ void Play(int input) {
 			mvaddch(obj[o].yPos, obj[o].xPos, obj[o].zn | ((o == 0) ? COLOR_PAIR(2) : COLOR_PAIR(5)));
 		}
 		move(obj[0].yPos, obj[0].xPos);
+		nextStage();
 	} else restart = FALSE;
-
-
 }
 
 int main() {
