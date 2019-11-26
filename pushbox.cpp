@@ -129,7 +129,10 @@ void Play(int input) {
 					obj[0].yPos -= 1;
 					// 상자와 플레이어가 겹치지 않도록-----------
 					for (int o = 1; o <= wbox; o++) {
-						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) obj[o].yPos -= 1;
+						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
+							obj[o].yPos -= 1;
+							push++;
+						}
 					}
 					//-------------------------------------------
 				} else if (up != 64) obj[0].yPos -= 1;
@@ -145,6 +148,7 @@ void Play(int input) {
 					for (int o = 1; o <= wbox; o++) {
 						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)){
 							obj[o].yPos += 1;
+							push++;
 						}
 					}
 				} else if (dw != 64) obj[0].yPos += 1;
@@ -160,6 +164,7 @@ void Play(int input) {
 					for (int o = 1; o <= wbox; o++) {
 						if ((obj[0].yPos == obj[o].yPos) &&  (obj[0].xPos == obj[o].xPos)) {
 							obj[o].xPos -= 1;
+							push++;
 						}
 					}
 				} else if (lf != 64) obj[0].xPos -= 1;
@@ -176,6 +181,7 @@ void Play(int input) {
 					for (int o = 1; o <= wbox; o++) {
 							if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
 								obj[o].xPos += 1;
+								push++;
 							}
 					}
 				} else if (rg != 64) obj[0].xPos += 1;
