@@ -106,8 +106,8 @@ void Step_Push(int step, int push) {
 
 void Play(int input) {
 	bool restart = FALSE;
-
-	chtype up, lf, dw, rg, oup, olf, odw, org;
+	int ymove = 0, xmove = 0;
+	chtype up, lf, dw, rg, oup, olf, odw, org, way = 35, wayobj;
 	up = (mvinch(obj[0].yPos - 1, obj[0].xPos) & A_CHARTEXT);
 	lf = (mvinch(obj[0].yPos, obj[0].xPos - 1) & A_CHARTEXT);
 	dw = (mvinch(obj[0].yPos + 1, obj[0].xPos) & A_CHARTEXT);
@@ -122,75 +122,28 @@ void Play(int input) {
 	switch(input) { // 방향키 제어
 		case 'w':
 		case KEY_UP:
-			if (up != 35) {
-				step++;
-				if (up == 64 && (oup == 45 || oup == 120)) {
-					obj[0].yPos -= 1;
-					// 상자와 플레이어가 겹치지 않도록-----------
-					for (int o = 1; o <= wbox; o++) {
-						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
-							obj[o].yPos -= 1;
-							push++;
-						}
-					}
-					//-------------------------------------------
-				} else if (up != 64) obj[0].yPos -= 1;
-				else step--;
-			}
-			Step_Push(step, push);
+			ymove = -1;
+			way = up;
+			wayobj = oup;
 			break;
 		case 's':
 		case KEY_DOWN:
-			if (dw != 35) {
-				step++;
-				if (dw == 64 && (odw == 45 || odw == 120)) {
-					obj[0].yPos += 1;
-					for (int o = 1; o <= wbox; o++) {
-						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)){
-							obj[o].yPos += 1;
-							push++;
-						}
-					}
-				} else if (dw != 64) obj[0].yPos += 1;
-				else step--;
-			}
-			Step_Push(step, push);
+			ymove = 1;
+			way = dw;
+			wayobj = odw;
 			break;
 		case 'a':
 		case KEY_LEFT:
-			if (lf != 35) {
-				step++;
-				if (lf == 64 && (olf == 45 || olf == 120)) {
-					obj[0].xPos -= 1;
-					for (int o = 1; o <= wbox; o++) {
-						if ((obj[0].yPos == obj[o].yPos) &&  (obj[0].xPos == obj[o].xPos)) {
-							obj[o].xPos -= 1;
-							push++;
-						}
-					}
-				} else if (lf != 64) obj[0].xPos -= 1;
-				else step--;
-			}
-			Step_Push(step, push);
+			xmove = -1;
+			way = lf;
+			wayobj = olf;
 			break;
 		case 'd':
 		case KEY_RIGHT:
-			if (rg != 35) {
-				step++;
-				if (rg == 64 && (org == 45 || org == 120)) {
-					obj[0].xPos += 1;
-					for (int o = 1; o <= wbox; o++) {
-							if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
-								obj[o].xPos += 1;
-								push++;
-							}
-					}
-				} else if (rg != 64) obj[0].xPos += 1;
-				else step--;
-			}
-			Step_Push(step, push);
+			xmove = 1;
+			way = rg;
+			wayobj = org;
 			break;
-
 		case 'r':
 		case 'R':
 			restart = TRUE;
@@ -200,6 +153,25 @@ void Play(int input) {
 		default:
 			break;
 	}
+	if (way != 35) {
+		step++;
+		if (way == 64 && (wayobj == 45 || wayobj == 120)) {
+			obj[0].xPos += xmove;
+			obj[0].yPos += ymove;
+			for (int o = 1; o <= wbox; o++) {
+				if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
+					obj[o].xPos += xmove;
+					obj[o].yPos += ymove;
+					push++;
+				}
+			}
+		} else if (way != 64){
+			obj[0].xPos += xmove;
+			obj[0].yPos += ymove;
+		} else step--;
+	}
+	Step_Push(step, push);
+
 	if (!restart) {
 		for (int o = 0; o <= wbox; o++) {
 			obj[o].ozn = mvinch(obj[o].yPos, obj[o].xPos);
