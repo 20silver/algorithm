@@ -1,0 +1,53 @@
+﻿  ConsoleApplication1.cpp
+  Problem.cpp
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): error C2679:  이항 '=': 오른쪽 피연산자로 'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> *' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): error C2679:         with
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): error C2679:         [
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): error C2679:             _Kty=Coordinate
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): error C2679:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :  'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> &std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>>::operator =(std::initializer_list<Coordinate>)'일 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :  또는       'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> &std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>>::operator =(std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>> &&) noexcept(<expr>)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :  또는       'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> &std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>>::operator =(const std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>> &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :         ]
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): message :  인수 목록 '(std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>>, std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> *)'을(를) 일치시키는 동안
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): message :         with
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): message :         [
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): message :             _Kty=Coordinate
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(8,21): message :         ]
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): error C2679:  이항 '=': 오른쪽 피연산자로 'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> *' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): error C2679:         with
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): error C2679:         [
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): error C2679:             _Kty=Coordinate
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): error C2679:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :  'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> &std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>>::operator =(std::initializer_list<Coordinate>)'일 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(147,10): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :  또는       'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> &std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>>::operator =(std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>> &&) noexcept(<expr>)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(120,10): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :  또는       'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> &std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>>::operator =(const std::set<_Kty,std::less<_Kty>,std::allocator<_Kty>> &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(111,10): message :         ]
+  코드를 생성하고 있습니다...
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): message :  인수 목록 '(std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>>, std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>> *)'을(를) 일치시키는 동안
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): message :         with
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): message :         [
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): message :             _Kty=Coordinate
+C:\Users\이연경\OneDrive - 국민대학교\kmu5-2\algorithm\algo_proj\ConsoleApplication1\ConsoleApplication1\Problem.cpp(9,21): message :         ]
