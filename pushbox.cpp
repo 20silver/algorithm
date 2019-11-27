@@ -1,14 +1,13 @@
 /*
  * < 구현해야 할 목록 >
- * fstream으로 파일 불러오기
- * push 구현하기
  * 스테이지를 완료했을 때 다음 스테이지로 넘어가기
- *벽이나 상자에 막혔을 때 step수 증가하지 않도록 하기
+ * left = l, right = r, up = u, down = d를 string으로 입력받았을 때, 그 방향으로 움직이도록(자동화)
 */
-
+#include <iostream>
 #include <ncurses.h>
 #include <fstream>
 #include <stdlib.h>
+#include <string>
 
 using namespace std;
 
@@ -19,26 +18,30 @@ struct Object {
 	chtype ozn;
 };
 
-#define N 10
+#define N 30
 struct Object obj[N] = {};
 
-int wbox = 0, lev = 1, step = 0, push = 0;
+int wbox = 0, lev = 1, step = 0, push = 0, goal = 19;
 
 void levList(int *h, int *w, int *array, int y, int x, int n) {
-	// fstream으로 파일 불러오는 것으로 수정
-	if (n == 1) {
-		*h = 7;
-		*w = 6;
-		int map0[7][6] = {
-			{1,1,1,1,1,4},
-			{1,0,0,0,1,4},
-			{1,3,3,3,1,4},
-			{1,2,2,2,1,1},
-			{1,0,5,0,0,1},
-			{1,0,0,0,0,1},
-			{1,1,1,1,1,1}};
-		*array = map0[y][x];
-	}
+	char cstagenum = '0' + n; //stage num int to char
+	char sstagenum[12] = {'s', 't', 'a', 'g', 'e', '/', cstagenum, '.', 't', 'x', 't', '\0'};
+	ifstream stage(sstagenum);
+    if(stage.fail())
+    {
+        printf("파일 없음");
+    }
+    stage >> *h >> *w;
+	int map0[*h][*w];
+    for (int i = 0; i < *h; i++) {
+        for (int j = 0; j < *w; j++) {
+            int n;
+            stage >> n;
+            map0[i][j] = n;
+        }
+    }
+    stage.close();
+	*array = map0[y][x];
 }
 
 void pallete() { // 색 지정
@@ -57,7 +60,7 @@ void Level(int n) { // 숫자 - 스테이지 변환
 	mvprintw(2, 1, "Move- Arrow, Restart-R, Exit-Q");
 	mvprintw(3, 8, "Step: %d, Push: %d", step, push);
 	int x = 0, y = 0, h = 1, w = 1, map;
-	wbox = 0;
+	wbox = 0; goal = 19;
 
 	for (y = 0; y < h; y++) {
 		for (x = 0; x < w; x++) {
@@ -75,12 +78,13 @@ void Level(int n) { // 숫자 - 스테이지 변환
 					mvaddch(obj[wbox].yPos, obj[wbox].xPos, obj[wbox].zn | COLOR_PAIR(5));
 					break;
 				case 3: //목적지
+					goal += 1;
 					mvaddch(y + 4, x + 10, '-' | COLOR_PAIR(4));
-					obj[1].ozn = mvinch(y + 4, x + 10);
-					obj[1].yPos = y + 4;
-					obj[1].xPos = x + 10;
-					obj[1].zn = 'x';
-					mvaddch(obj[1].yPos, obj[1].xPos, obj[1].zn | COLOR_PAIR(3));
+					obj[goal].ozn = mvinch(y + 4, x + 10);
+					obj[goal].yPos = y + 4;
+					obj[goal].xPos = x + 10;
+					obj[goal].zn = 'x';
+					mvaddch(obj[goal].yPos, obj[goal].xPos, obj[goal].zn | COLOR_PAIR(3));
 					break;
 				case 4: mvaddch(y + 4, x + 10, '+' | COLOR_PAIR(6)); break; // 벽 외부
 				case 5: // 플레이어
@@ -101,10 +105,25 @@ void Step_Push(int step, int push) {
 	mvprintw(3, 8, "Step: %d, Push: %d", step, push);
 }
 
+void nextStage() {
+	int same = 0; goal = 19;
+	for(int o = 1; o <= wbox; o++) {
+		goal++;
+		if ((obj[goal].yPos == obj[o].yPos) && (obj[goal].xPos == obj[o].xPos)) {
+			same++;
+			if (same == wbox) {
+				lev += 1;
+				step = 0; push = 0;
+				Level(lev);
+			}
+		}
+	}
+}
+
 void Play(int input) {
 	bool restart = FALSE;
-
-	chtype up, lf, dw, rg, oup, olf, odw, org;
+	int ymove = 0, xmove = 0;
+	chtype up, lf, dw, rg, oup, olf, odw, org, way = 35, wayobj;
 	up = (mvinch(obj[0].yPos - 1, obj[0].xPos) & A_CHARTEXT);
 	lf = (mvinch(obj[0].yPos, obj[0].xPos - 1) & A_CHARTEXT);
 	dw = (mvinch(obj[0].yPos + 1, obj[0].xPos) & A_CHARTEXT);
@@ -116,65 +135,31 @@ void Play(int input) {
 
 	for(int o = 0; o <= wbox; o++) { mvaddch(obj[o].yPos, obj[o].xPos, obj[o].ozn);}
 
-	switch(input) { // 방향키 제어 // push 구현
+	switch(input) { // 방향키 제어
+		case 'w':
 		case KEY_UP:
-			step++;
-			if (up != 35) {
-				if (up == 64 && (oup == 45 || oup == 120)) {
-					obj[0].yPos -= 1;
-					// 상자와 플레이어가 겹치지 않도록-----------
-					for (int o = 1; o <= wbox; o++) {
-						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) obj[o].yPos -= 1;
-					}
-					//-------------------------------------------
-				} else if (up != 64) obj[0].yPos -= 1;
-			}
-			Step_Push(step, push);
+			ymove = -1;
+			way = up;
+			wayobj = oup;
 			break;
+		case 's':
 		case KEY_DOWN:
-			step++;
-			if (dw != 35) {
-				if (dw == 64 && (odw == 45 || odw == 120)) {
-					obj[0].yPos += 1;
-					for (int o = 1; o <= wbox; o++) {
-						if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)){
-							obj[o].yPos += 1;
-						}
-					}
-				} else if (dw != 64) obj[0].yPos += 1;
-			}
-			Step_Push(step, push);
+			ymove = 1;
+			way = dw;
+			wayobj = odw;
 			break;
+		case 'a':
 		case KEY_LEFT:
-			step++;
-			if (lf != 35) {
-				if (lf == 64 && (olf == 45 || olf == 120)) {
-					obj[0].xPos -= 1;
-					for (int o = 1; o <= wbox; o++) {
-						if ((obj[0].yPos == obj[o].yPos) &&  (obj[0].xPos == obj[o].xPos)) {
-							obj[o].xPos -= 1;
-						}
-					}
-				} else if (lf != 64) obj[0].xPos -= 1;
-			}
-			Step_Push(step, push);
+			xmove = -1;
+			way = lf;
+			wayobj = olf;
 			break;
-
+		case 'd':
 		case KEY_RIGHT:
-			step++;
-			if (rg != 35) {
-				if (rg == 64 && (org == 45 || org == 120)) {
-					obj[0].xPos += 1;
-					for (int o = 1; o <= wbox; o++) {
-							if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
-								obj[o].xPos += 1;
-							}
-					}
-				} else if (rg != 64) obj[0].xPos += 1;
-			}
-			Step_Push(step, push);
+			xmove = 1;
+			way = rg;
+			wayobj = org;
 			break;
-
 		case 'r':
 		case 'R':
 			restart = TRUE;
@@ -184,24 +169,34 @@ void Play(int input) {
 		default:
 			break;
 	}
+	if (way != 35) {
+		step++;
+		if (way == 64 && (wayobj == 45 || wayobj == 120)) {
+			obj[0].xPos += xmove;
+			obj[0].yPos += ymove;
+			for (int o = 1; o <= wbox; o++) {
+				if ((obj[0].yPos == obj[o].yPos) && (obj[0].xPos == obj[o].xPos)) {
+					obj[o].xPos += xmove;
+					obj[o].yPos += ymove;
+					push++;
+				}
+			}
+		} else if (way != 64){
+			obj[0].xPos += xmove;
+			obj[0].yPos += ymove;
+		} else step--;
+	}
+	Step_Push(step, push);
+
 	if (!restart) {
 		for (int o = 0; o <= wbox; o++) {
 			obj[o].ozn = mvinch(obj[o].yPos, obj[o].xPos);
 			mvaddch(obj[o].yPos, obj[o].xPos, obj[o].zn | ((o == 0) ? COLOR_PAIR(2) : COLOR_PAIR(5)));
 		}
 		move(obj[0].yPos, obj[0].xPos);
+		nextStage();
 	} else restart = FALSE;
-
-		// 상자의 위치와 목적지의 위치가 모두 일치하는 경우 다음 레벨로 넘어감
 }
-/*	// 상자의 위치와 목적지의 위치가 모두 일치하는 경우 다음 레벨로 넘어감
-int same = 1;
-for (int o = 1; o <= wbox; o++) {
-if ((obj[1].yPos == obj[o].yPos) && (obj[1].xPos == obj[o].xPos)) {
-same++;
-}// lev += 1; Level(lev);
-}*/
-
 
 int main() {
 	int ch;
