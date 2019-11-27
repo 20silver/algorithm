@@ -1,51 +1,142 @@
-﻿  Coordinate.cpp
-  Heuristics.cpp
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\HungarianAlgorithm.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(93,39): error C2679: 이항 '=': 오른쪽 피연산자로 'int' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1126,13): message : 'std::vector<double,std::allocator<_Ty>> &std::vector<_Ty,std::allocator<_Ty>>::operator =(std::initializer_list<_Ty>)'일 수 있습니다.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1126,13): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1126,13): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1126,13): message :             _Ty=double
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1126,13): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1118,13): message : 또는       'std::vector<double,std::allocator<_Ty>> &std::vector<_Ty,std::allocator<_Ty>>::operator =(const std::vector<_Ty,std::allocator<_Ty>> &)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1118,13): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1118,13): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1118,13): message :             _Ty=double
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(1118,13): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(615,13): message : 또는       'std::vector<double,std::allocator<_Ty>> &std::vector<_Ty,std::allocator<_Ty>>::operator =(std::vector<_Ty,std::allocator<_Ty>> &&) noexcept(<expr>)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(615,13): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(615,13): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(615,13): message :             _Ty=double
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector(615,13): message :         ]
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(93,39): message : 인수 목록 '(_Ty, int)'을(를) 일치시키는 동안
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(93,39): message :         with
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(93,39): message :         [
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(93,39): message :             _Ty=std::vector<double,std::allocator<double>>
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(93,39): message :         ]
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(94,15): error C2676: 이항 '+=': '_Ty'이(가) 이 연산자를 정의하지 않거나 미리 정의된 연산자에 허용되는 형식으로의 변환을 정의하지 않습니다.
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(94,15): error C2676:         with
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(94,15): error C2676:         [
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(94,15): error C2676:             _Ty=std::vector<double,std::allocator<double>>
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(94,15): error C2676:         ]
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(103,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  HungarianAlgorithm.cpp
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(106,9): error C2677: 이항 '+=': '_Ty' 형식을 사용하는 전역 연산자가 없거나 허용되는 변환이 없습니다.
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(106,9): error C2677:         with
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(106,9): error C2677:         [
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(106,9): error C2677:             _Ty=std::vector<double,std::allocator<double>>
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Heuristics.cpp(106,9): error C2677:         ]
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\HungarianAlgorithm.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\HungarianAlgorithm.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  Node.cpp
-  Problem.cpp
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\HungarianAlgorithm.cpp(57,19): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  Problem.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:  이항 '<': 왼쪽 피연산자로 'const _Ty' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\system_error(263,24): message :  'bool std::operator <(const std::error_condition &,const std::error_condition &) noexcept'일 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\system_error(258,24): message :  또는       'bool std::operator <(const std::error_code &,const std::error_code &) noexcept'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :  인수 목록 '(const _Ty, const _Ty)'을(를) 일치시키는 동안
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :  클래스 템플릿 멤버 함수 'bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const'을(를) 컴파일하는 중입니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :  컴파일되는 함수 템플릿 인스턴스화 'bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::less<_Kty>'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1422): message :  컴파일되는 변수 템플릿 'const bool is_empty_v<std::less<Coordinate> >'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Pr=std::less<Coordinate>,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Alloc=std::allocator<Coordinate>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         ]
   Search.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(18,1): fatal error C1189: #error:  <hash_map> is deprecated and will be REMOVED. Please use <unordered_map>. You can define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS to acknowledge that you have received this warning.
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Search.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\Search.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\AlgoProject\HungarianAlgorithm.h(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>>'에 대한 참조를 확인하세요.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         with
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         [
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :             _Kty=Coordinate
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         ]
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Search.cpp(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Search.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Heuristics.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\HungarianAlgorithm.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Search.cpp(39,27): warning C4018:  '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Search.cpp(83,27): warning C4018:  '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:  이항 '<': 왼쪽 피연산자로 'const _Ty' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\system_error(263,24): message :  'bool std::operator <(const std::error_condition &,const std::error_condition &) noexcept'일 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\system_error(258,24): message :  또는       'bool std::operator <(const std::error_code &,const std::error_code &) noexcept'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :  인수 목록 '(const _Ty, const _Ty)'을(를) 일치시키는 동안
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :  클래스 템플릿 멤버 함수 'bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const'을(를) 컴파일하는 중입니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :  컴파일되는 함수 템플릿 인스턴스화 'bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::less<_Kty>'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1422): message :  컴파일되는 변수 템플릿 'const bool is_empty_v<std::less<Coordinate> >'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Pr=std::less<Coordinate>,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Alloc=std::allocator<Coordinate>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         ]
   SokobanSolver.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(18,1): fatal error C1189: #error:  <hash_map> is deprecated and will be REMOVED. Please use <unordered_map>. You can define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS to acknowledge that you have received this warning.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>>'에 대한 참조를 확인하세요.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         with
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         [
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :             _Kty=Coordinate
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         ]
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\SokobanSolver.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Heuristics.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\HungarianAlgorithm.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Search.h(1,1): warning C4819:  현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:  이항 '<': 왼쪽 피연산자로 'const _Ty' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): error C2678:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\system_error(263,24): message :  'bool std::operator <(const std::error_condition &,const std::error_condition &) noexcept'일 수 있습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\system_error(258,24): message :  또는       'bool std::operator <(const std::error_code &,const std::error_code &) noexcept'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :  인수 목록 '(const _Ty, const _Ty)'을(를) 일치시키는 동안
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(124,1): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :  클래스 템플릿 멤버 함수 'bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const'을(를) 컴파일하는 중입니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstddef(123): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :  컴파일되는 함수 템플릿 인스턴스화 'bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :             _Ty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xutility(622): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::less<_Kty>'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :             _Kty=Coordinate
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1423): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xmemory(1422): message :  컴파일되는 변수 템플릿 'const bool is_empty_v<std::less<Coordinate> >'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::_Tree<std::_Tset_traits<_Kty,_Pr,_Alloc,false>>'에 대한 참조를 확인하세요.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Kty=Coordinate,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Pr=std::less<Coordinate>,
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :             _Alloc=std::allocator<Coordinate>
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\set(49): message :         ]
   State.cpp
+  algo_simple.cpp
   코드를 생성하고 있습니다...
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\hash_map(18,1): fatal error C1189: #error:  <hash_map> is deprecated and will be REMOVED. Please use <unordered_map>. You can define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS to acknowledge that you have received this warning.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :  컴파일되는 클래스 템플릿 인스턴스화 'std::set<Coordinate,std::less<_Kty>,std::allocator<_Kty>>'에 대한 참조를 확인하세요.
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         with
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         [
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :             _Kty=Coordinate
+C:\Users\이연경\Documents\GitHub\algorithm\Algorithm_Team\AlgoProject\Problem.h(16): message :         ]
