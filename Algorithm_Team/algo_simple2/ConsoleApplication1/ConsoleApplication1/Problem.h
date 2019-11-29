@@ -19,9 +19,9 @@ public:
 	set<Coordinate>* goals;
 
 	// dynamic datas
-    State* initialState;
+	State initialState;
 
-	State* currState;
+	State currState;
 
 	Problem(State initialState, set<Coordinate> walls, set<Coordinate> goals);
 	bool isSolved(State* state);

@@ -10,11 +10,6 @@ int Coordinate::hashCode() const {
 	return row * 1000 + col;
 }
 
-bool Coordinate::equals(Coordinate c)
-{
-	return ((this->row == c.row) && (this->col == c.col));
-}
-
 bool Coordinate::operator==(const Coordinate& other) const
 {
 	return (hashCode() == other.hashCode());
@@ -23,4 +18,10 @@ bool Coordinate::operator==(const Coordinate& other) const
 bool Coordinate::operator<(const Coordinate& other) const
 {
 	return (hashCode() < other.hashCode());
+}
+
+Coordinate& Coordinate::operator=(Coordinate& coord) {
+	this->row = coord.row;
+	this->col = coord.col;
+	return *this;
 }

@@ -12,9 +12,9 @@ public:
 	set <Coordinate>* boxes;
 	Coordinate* player;
 	State(set<Coordinate> boxes, Coordinate player);
+	State() {};
 
 	int hashCode() const;
-	bool equals(State*);
 
 	//getters
 	set<Coordinate> getBoxes()

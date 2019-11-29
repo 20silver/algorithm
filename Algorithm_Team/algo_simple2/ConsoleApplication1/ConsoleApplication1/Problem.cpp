@@ -4,12 +4,12 @@
 
 Problem::Problem(State initialState, set<Coordinate> walls, set<Coordinate> goals)
 {
-	this->initialState = &initialState;
+	this->initialState = initialState;
 	this->walls = &walls;
 	this->goals = &goals;
-	currState = &initialState;
+	currState = initialState;
 
-	cout << "initialState |  player pos : " << this->initialState->player->col << " boxes size : " << this->initialState->boxes->size() <<
+	cout << "initialState |  player pos : " << this->initialState.player->col << " boxes size : " << this->initialState.boxes->size() <<
 		" goals size : " << this->goals->size() << " walls size: " << this->walls->size();
 }
 
@@ -39,12 +39,12 @@ State* Problem::move(Coordinate* new_player)
 	// new_player ��ġ�� box�� �ִ��� 
 	set<Coordinate>::iterator it_box;
 	//it_box = find(currState->boxes->begin(), currState->boxes->end(), *new_player);
-	it_box = currState->boxes->find(*new_player);
-	if (it_box != currState->boxes->end())
+	it_box = currState.boxes->find(*new_player);
+	if (it_box != currState.boxes->end())
 		return nullptr;
 
 	// �÷��̾ �̵��� ������Ʈ �����
-	State* new_state = new State(*currState->boxes, *new_player);
+	State* new_state = new State(*currState.boxes, *new_player);
 	return new_state;
 }
 
@@ -68,13 +68,13 @@ State* Problem::push(Coordinate* new_player, int dir)
                 return nullptr;
 
             // is there a box
-            it = currState->boxes->find(*next_box);
-            if(it != currState->boxes->end())
+            it = currState.boxes->find(*next_box);
+            if(it != currState.boxes->end())
                 return nullptr;
 
             // update currState
-            it = currState->boxes->begin();
-            while(it != currState->boxes->end())
+            it = currState.boxes->begin();
+            while(it != currState.boxes->end())
             {
                 if(*it == *target_box)
                     new_boxes.insert(*next_box);
@@ -82,7 +82,7 @@ State* Problem::push(Coordinate* new_player, int dir)
                 it++;
             }
             new_state = new State(new_boxes, *target_box);
-            currState = new_state;
+            currState = *new_state;
             break;
         case 2:
             target_box = new Coordinate(new_player->row, new_player->col-1);
@@ -92,13 +92,13 @@ State* Problem::push(Coordinate* new_player, int dir)
                 return nullptr;
 
             // is there a box
-            it = currState->boxes->find(*next_box);
-            if(it != currState->boxes->end())
+            it = currState.boxes->find(*next_box);
+            if(it != currState.boxes->end())
                 return nullptr;
 
             // update currState
-            it = currState->boxes->begin();
-            while(it != currState->boxes->end())
+            it = currState.boxes->begin();
+            while(it != currState.boxes->end())
             {
                 if(*it == *target_box)
                     new_boxes.insert(*next_box);
@@ -106,7 +106,7 @@ State* Problem::push(Coordinate* new_player, int dir)
                 it++;
             }
             new_state = new State(new_boxes, *target_box);
-            currState = new_state;
+            currState = *new_state;
             break;
         case 3 :
             target_box = new Coordinate(new_player->row-1, new_player->col);
@@ -116,13 +116,13 @@ State* Problem::push(Coordinate* new_player, int dir)
                 return nullptr;
 
             // is there a box
-            it = currState->boxes->find(*next_box);
-            if(it != currState->boxes->end())
+            it = currState.boxes->find(*next_box);
+            if(it != currState.boxes->end())
                 return nullptr;
 
             // update currState
-            it = currState->boxes->begin();
-            while(it != currState->boxes->end())
+            it = currState.boxes->begin();
+            while(it != currState.boxes->end())
             {
                 if(*it == *target_box)
                     new_boxes.insert(*next_box);
@@ -130,7 +130,7 @@ State* Problem::push(Coordinate* new_player, int dir)
                 it++;
             }
             new_state = new State(new_boxes, *target_box);
-            currState = new_state;
+            currState = *new_state;
             break;
         case 4:
             target_box = new Coordinate(new_player->row+1, new_player->col);
@@ -140,13 +140,13 @@ State* Problem::push(Coordinate* new_player, int dir)
                 return nullptr;
 
             // is there a box
-            it = currState->boxes->find(*next_box);
-            if(it != currState->boxes->end())
+            it = currState.boxes->find(*next_box);
+            if(it != currState.boxes->end())
                 return nullptr;
 
             // update currState
-            it = currState->boxes->begin();
-            while(it != currState->boxes->end())
+            it = currState.boxes->begin();
+            while(it != currState.boxes->end())
             {
                 if(*it == *target_box)
                     new_boxes.insert(*next_box);
@@ -154,7 +154,7 @@ State* Problem::push(Coordinate* new_player, int dir)
                 it++;
             }
             new_state = new State(new_boxes, *target_box);
-            currState = new_state;
+            currState = *new_state;
             break;
     };
     return new_state;
@@ -166,8 +166,8 @@ string Problem::bfsSolver()
     set<State> visited;
     queue<tuple<State, string>> q;
 
-    q.push(make_tuple(*initialState, ""));
-    visited.insert(*initialState);
+    q.push(make_tuple(initialState, ""));
+    visited.insert(initialState);
 
     tuple<int, int> dirs[] = {
             make_tuple(0, 1),

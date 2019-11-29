@@ -6,7 +6,7 @@ State::State(set<Coordinate> boxes, Coordinate player)
 {
 	this->boxes = &boxes;
 	this->player = &player;
-	//cout << "state : " << this->boxes->size() << " " << this->player->col << endl;
+	cout << "state : " << this->boxes->size() << " " << this->player->col << endl;
 }
 
 int State::hashCode() const
@@ -23,11 +23,6 @@ int State::hashCode() const
 	return result; 
 }
 
-bool State::equals(State* other)
-{
-	if (this->hashCode() == other->hashCode()) return true;
-	return (this->boxes == other->boxes) && (this->player == other->player);
-}
 
 bool State::operator==(const State& other) const
 {

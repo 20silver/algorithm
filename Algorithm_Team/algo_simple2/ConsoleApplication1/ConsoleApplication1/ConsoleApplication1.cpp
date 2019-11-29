@@ -17,7 +17,8 @@ void loadfile()
 	fin >> mapCount;
 
 	set<Coordinate> walls, goals, boxes;
-	Coordinate* player = nullptr;
+	Coordinate player(-1, -1);
+	Coordinate tmp(-1, -1);
 
 	for (int idx = 0; idx < mapCount; idx++)
 	{
@@ -31,32 +32,40 @@ void loadfile()
 			{
 				int c; fin >> c;
 				cout << c << " ";
-				Coordinate* tmp;
 				if (c == 1) //walls
 				{
-					tmp = new Coordinate(i, j);
-					walls.insert(*tmp);
+					tmp.setRow(i);
+					tmp.setCol(j);
+					walls.insert(tmp);
 				}
 				else if (c == 2) //box
 				{
-					tmp = new Coordinate(i, j);
-					boxes.insert(*tmp);
+					tmp.setRow(i);
+					tmp.setCol(j);
+					boxes.insert(tmp);
 				}
 				else if (c == 3)
 				{
-					tmp = new Coordinate(i, j);
-					goals.insert(*tmp);
+					tmp.setRow(i);
+					tmp.setCol(j);
+					goals.insert(tmp);
 				}
 				else if (c == 5) // player
 				{
-					player = new Coordinate(i, j);
+					player.setCol(j);
+					player.setRow(i);
 					cout << i << endl;
 				}
 			}
 		}
 	}
 	// create problem
-	State init_state(boxes, *player); 
+	cout << "before : " << boxes.size() << player.col << endl;
+	State init_state(boxes, player);
+
+	cout << "init_state |  player pos : " << init_state.player->getCol() << " boxes size : " << init_state.boxes->size() <<
+		" goals size : " << goals.size() << " walls size: " << walls.size() <<endl;
+
 	Problem p(init_state, walls, goals);
 	
 	
