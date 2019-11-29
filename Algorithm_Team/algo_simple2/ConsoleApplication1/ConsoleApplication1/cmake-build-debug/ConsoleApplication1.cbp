@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ConsoleApplication1"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ConsoleApplication1">
+				<Option output="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/ConsoleApplication1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/."/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 ConsoleApplication1"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ConsoleApplication1/fast">
+				<Option output="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/ConsoleApplication1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/."/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 ConsoleApplication1/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/leeyk/OneDrive\ -\ 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/ConsoleApplication1.cpp">
+			<Option target="ConsoleApplication1"/>
+		</Unit>
+		<Unit filename="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/Coordinate.cpp">
+			<Option target="ConsoleApplication1"/>
+		</Unit>
+		<Unit filename="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/Coordinate.h">
+			<Option target="ConsoleApplication1"/>
+		</Unit>
+		<Unit filename="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/Problem.cpp">
+			<Option target="ConsoleApplication1"/>
+		</Unit>
+		<Unit filename="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/Problem.h">
+			<Option target="ConsoleApplication1"/>
+		</Unit>
+		<Unit filename="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/State.cpp">
+			<Option target="ConsoleApplication1"/>
+		</Unit>
+		<Unit filename="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/State.h">
+			<Option target="ConsoleApplication1"/>
+		</Unit>
+		<Unit filename="/Users/leeyk/OneDrive - 국민대학교/kmu5-2/algorithm/algo_proj/ConsoleApplication1/ConsoleApplication1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
