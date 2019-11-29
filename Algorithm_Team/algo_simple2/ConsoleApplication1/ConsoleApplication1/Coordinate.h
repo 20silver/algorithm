@@ -10,6 +10,7 @@ public :
 
 	Coordinate(int row, int col);
 	int hashCode() const;
+
 	bool equals(Coordinate);
 
     bool operator==(const Coordinate& other) const;

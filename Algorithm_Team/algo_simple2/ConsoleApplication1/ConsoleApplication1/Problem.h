@@ -7,6 +7,7 @@
 #include <string>
 #include <queue>
 #include <tuple>
+#include <iostream>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ public:
 
 	State* currState;
 
-	Problem(State*, set<Coordinate>*, set<Coordinate>*);
+	Problem(State initialState, set<Coordinate> walls, set<Coordinate> goals);
 	bool isSolved(State* state);
 	bool deadlockTest(State* state);
     State* move(Coordinate* new_player);

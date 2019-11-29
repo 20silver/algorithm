@@ -2,13 +2,17 @@
 
 
 
-Problem::Problem(State *initialState, set<Coordinate> *walls, set<Coordinate> *goals)
+Problem::Problem(State initialState, set<Coordinate> walls, set<Coordinate> goals)
 {
-	this->initialState = initialState;
-	this->walls = walls;
-	this->goals = goals;
-	this->currState = nullptr;
+	this->initialState = &initialState;
+	this->walls = &walls;
+	this->goals = &goals;
+	currState = &initialState;
+
+	cout << "initialState |  player pos : " << this->initialState->player->col << " boxes size : " << this->initialState->boxes->size() <<
+		" goals size : " << this->goals->size() << " walls size: " << this->walls->size();
 }
+
 bool Problem::isSolved(State* state)
 {
 	// state�� box��� ���� Ŭ������ goal���� ���鼭 ��� ��ġ�ϸ� true
@@ -174,7 +178,9 @@ string Problem::bfsSolver()
 
     while(!q.empty())
     {
+		cout << "queue size is " << q.size() << endl;
         State cur = get<0>(q.front());
+		cout << "player position" << cur.player->row << endl;
         q.pop();
 
         for (int i = 0; i < 4; i++)

@@ -1,9 +1,12 @@
 #include "State.h"
 
+#include <iostream>
+
 State::State(set<Coordinate> boxes, Coordinate player)
 {
 	this->boxes = &boxes;
 	this->player = &player;
+	//cout << "state : " << this->boxes->size() << " " << this->player->col << endl;
 }
 
 int State::hashCode() const
