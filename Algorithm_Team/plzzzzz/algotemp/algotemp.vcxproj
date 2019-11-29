@@ -21,12 +21,15 @@
   <ItemGroup>
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="Search.h" />
+    <ClInclude Include="SokobanSolver.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="Problem.h" />
     <ClInclude Include="Node.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Coordinate.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SokobanSolver.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Problem.cpp" />

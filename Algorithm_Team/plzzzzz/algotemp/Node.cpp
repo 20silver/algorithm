@@ -1,9 +1,9 @@
 #include "Node.h"
 
 Node::Node() {
-	this->parent = nullptr;
-	this->state = nullptr;
-	this->cost = NULL;
+	this->parent = (Node*)nullptr;
+	this->state = (State*)nullptr;
+	this->cost = -1;
 	this->move = "";
 }
 

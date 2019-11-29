@@ -8,7 +8,7 @@ public:
 	int col;
 
 	// 생성자
-	Coordinate() { row = NULL; col = NULL; };
+	Coordinate() { row = -1; col = -1; };
 	Coordinate(int row, int col);
 
 	// Coordinate 객체가 가지는 고유한 해쉬코드

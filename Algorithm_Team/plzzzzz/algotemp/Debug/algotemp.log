@@ -1,8 +1,9 @@
-﻿  Coordinate.cpp
+﻿  main.cpp
+  SokobanSolver.cpp
   Search.cpp
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(38,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(38,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2800,1): error C2678: 이항 '==': 왼쪽 피연산자로 'Node' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
-C:\Users\yelim\source\repos\algotemp\algotemp\Node.h(19,7): message : 'bool Node::operator ==(const Node &) const'일 수 있습니다.
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Node.h(19,7): message : 'bool Node::operator ==(const Node &) const'일 수 있습니다.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\exception(290,24): message : 또는       'bool std::operator ==(const std::exception_ptr &,std::nullptr_t) noexcept'
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\exception(286,24): message : 또는       'bool std::operator ==(std::nullptr_t,const std::exception_ptr &) noexcept'
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\exception(282,24): message : 또는       'bool std::operator ==(const std::exception_ptr &,const std::exception_ptr &) noexcept'
@@ -28,14 +29,14 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2822): message :             _InIt=std::_Deque_unchecked_iterator<std::_Deque_val<std::_Deque_simple_types<Node>>>,
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2822): message :             _Ty=Node
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2822): message :         ]
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(50): message : 컴파일되는 함수 템플릿 인스턴스화 '_InIt std::find<std::_Deque_iterator<std::_Deque_val<std::_Deque_simple_types<_Ty>>>,Node*>(_InIt,const _InIt,Node *const &)'에 대한 참조를 확인하세요.
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(50): message :         with
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(50): message :         [
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(50): message :             _InIt=std::_Deque_iterator<std::_Deque_val<std::_Deque_simple_types<Node>>>,
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(50): message :             _Ty=Node
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(50): message :         ]
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(50): message : 컴파일되는 함수 템플릿 인스턴스화 '_InIt std::find<std::_Deque_iterator<std::_Deque_val<std::_Deque_simple_types<_Ty>>>,Node*>(_InIt,const _InIt,Node *const &)'에 대한 참조를 확인하세요.
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(50): message :         with
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(50): message :         [
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(50): message :             _InIt=std::_Deque_iterator<std::_Deque_val<std::_Deque_simple_types<Node>>>,
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(50): message :             _Ty=Node
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(50): message :         ]
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2800,1): error C2678: 이항 '==': 왼쪽 피연산자로 'const Coordinate' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다.
-C:\Users\yelim\source\repos\algotemp\algotemp\Coordinate.h(19,7): message : 'bool Coordinate::operator ==(const Coordinate &) const'일 수 있습니다.
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Coordinate.h(19,7): message : 'bool Coordinate::operator ==(const Coordinate &) const'일 수 있습니다.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\exception(290,24): message : 또는       'bool std::operator ==(const std::exception_ptr &,std::nullptr_t) noexcept'
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\exception(286,24): message : 또는       'bool std::operator ==(std::nullptr_t,const std::exception_ptr &) noexcept'
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\exception(282,24): message : 또는       'bool std::operator ==(const std::exception_ptr &,const std::exception_ptr &) noexcept'
@@ -62,9 +63,9 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2822): message :             _Ty=Coordinate *
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility(2822): message :         ]
   코드를 생성하고 있습니다...
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(117): message : 컴파일되는 함수 템플릿 인스턴스화 '_InIt std::find<std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<Coordinate>>>,Coordinate*>(_InIt,const _InIt,const _Ty &)'에 대한 참조를 확인하세요.
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(117): message :         with
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(117): message :         [
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(117): message :             _InIt=std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<Coordinate>>>,
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(117): message :             _Ty=Coordinate *
-C:\Users\yelim\source\repos\algotemp\algotemp\Search.cpp(117): message :         ]
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(117): message : 컴파일되는 함수 템플릿 인스턴스화 '_InIt std::find<std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<Coordinate>>>,Coordinate*>(_InIt,const _InIt,const _Ty &)'에 대한 참조를 확인하세요.
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(117): message :         with
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(117): message :         [
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(117): message :             _InIt=std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<Coordinate>>>,
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(117): message :             _Ty=Coordinate *
+C:\Users\yelim\OneDrive\바탕 화면\전공\2019-2\알고리즘\Project\algorithm\Algorithm_Team\algorithm\Algorithm_Team\plzzzzz\algotemp\Search.cpp(117): message :         ]
