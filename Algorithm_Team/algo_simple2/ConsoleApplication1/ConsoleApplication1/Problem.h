@@ -15,8 +15,8 @@ class Problem
 {
 public:
 	// static datas
-	set<Coordinate>* walls;
-	set<Coordinate>* goals;
+	set<Coordinate> walls;
+	set<Coordinate> goals;
 
 	// dynamic datas
 	State initialState;
@@ -24,10 +24,10 @@ public:
 	State currState;
 
 	Problem(State initialState, set<Coordinate> walls, set<Coordinate> goals);
-	bool isSolved(State* state);
-	bool deadlockTest(State* state);
-    State* move(Coordinate* new_player);
-    State* push(Coordinate* new_player, int dir);
+	bool isSolved(State state);
+	bool deadlockTest(State state);
+    State* move(Coordinate new_player);
+    State* push(Coordinate new_player, int dir);
 	string bfsSolver();
 
 	// set contains? -> for deadlockTest

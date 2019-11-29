@@ -9,6 +9,7 @@ public :
 	int col;
 
 	Coordinate(int row, int col);
+	Coordinate() {}
 	int hashCode() const;
 
 	int getRow() { return row; }

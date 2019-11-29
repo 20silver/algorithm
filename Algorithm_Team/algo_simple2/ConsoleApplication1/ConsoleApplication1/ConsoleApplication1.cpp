@@ -63,10 +63,12 @@ void loadfile()
 	cout << "before : " << boxes.size() << player.col << endl;
 	State init_state(boxes, player);
 
-	cout << "init_state |  player pos : " << init_state.player->getCol() << " boxes size : " << init_state.boxes->size() <<
+	cout << "init_state |  player pos : " << init_state.player.getCol() << " boxes size : " << init_state.boxes.size() <<
 		" goals size : " << goals.size() << " walls size: " << walls.size() <<endl;
 
 	Problem p(init_state, walls, goals);
+	string res = p.bfsSolver();
+	cout << "result : " << res << endl;
 	
 	
 	

@@ -9,8 +9,8 @@ using namespace std;
 class State
 {
 public:
-	set <Coordinate>* boxes;
-	Coordinate* player;
+	set <Coordinate> boxes;
+	Coordinate player;
 	State(set<Coordinate> boxes, Coordinate player);
 	State() {};
 
@@ -19,21 +19,21 @@ public:
 	//getters
 	set<Coordinate> getBoxes()
 	{
-		return *boxes;
+		return boxes;
 	}
 
 	Coordinate getPlayer()
 	{
-		return *player;
+		return player;
 	}
 
 	//setters
-	void setBoxes(set<Coordinate> *aboxes)
+	void setBoxes(set<Coordinate> aboxes)
 	{
 		this->boxes = aboxes;
 	}
 
-	void setPlayer(Coordinate *aplayer)
+	void setPlayer(Coordinate aplayer)
 	{
 		this->player = aplayer;
 	}
