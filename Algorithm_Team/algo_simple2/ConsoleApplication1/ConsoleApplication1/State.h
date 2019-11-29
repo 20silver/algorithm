@@ -11,10 +11,32 @@ class State
 public:
 	set <Coordinate>* boxes;
 	Coordinate* player;
-
 	State(set<Coordinate> boxes, Coordinate player);
+
 	int hashCode() const;
 	bool equals(State*);
+
+	//getters
+	set<Coordinate> getBoxes()
+	{
+		return *boxes;
+	}
+
+	Coordinate getPlayer()
+	{
+		return *player;
+	}
+
+	//setters
+	void setBoxes(set<Coordinate> *aboxes)
+	{
+		this->boxes = aboxes;
+	}
+
+	void setPlayer(Coordinate *aplayer)
+	{
+		this->player = aplayer;
+	}
 
     bool operator==(const State& other) const;
     bool operator<(const State& other) const;
