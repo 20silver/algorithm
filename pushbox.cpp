@@ -1,8 +1,3 @@
-/*
- * < 구현해야 할 목록 >
- * 스테이지를 완료했을 때 다음 스테이지로 넘어가기
- * left = l, right = r, up = u, down = d를 string으로 입력받았을 때, 그 방향으로 움직이도록(자동화)
-*/
 #include <iostream>
 #include <ncurses.h>
 #include <fstream>
