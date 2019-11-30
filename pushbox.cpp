@@ -106,6 +106,7 @@ void Step_Push(int step, int push) {
 }
 
 void stageClear() {
+	clear();
 	mvprintw(1, 3, "$$$$$$$$$$  $$            $$$$$$$$$     $$$$$      $$$$$$$ ");
 	mvprintw(2, 3, "$$          $$            $$           $$    $$    $$     $$");
 	mvprintw(3, 3, "$$          $$            $$          $$      $$   $$      $$ ");
