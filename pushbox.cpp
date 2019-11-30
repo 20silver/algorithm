@@ -16,27 +16,30 @@ struct Object {
 #define N 30
 struct Object obj[N] = {};
 
-int wbox = 0, lev = 5, step = 0, push = 0, goal = 19;
+int wbox = 0, lev = 1, step = 0, push = 0, goal = 19;
+bool hasmap = false;
+int mapdata[10][10];
 
 void levList(int *h, int *w, int *array, int y, int x, int n) {
-	char cstagenum = '0' + n; //stage num int to char
-	char sstagenum[12] = {'s', 't', 'a', 'g', 'e', '/', cstagenum, '.', 't', 'x', 't', '\0'};
-	ifstream stage(sstagenum);
-    if(stage.fail())
-    {
-        printf("파일 없음");
-    }
-    stage >> *h >> *w;
-	int map0[*h][*w];
-    for (int i = 0; i < *h; i++) {
-        for (int j = 0; j < *w; j++) {
-            int n;
-            stage >> n;
-            map0[i][j] = n;
-        }
-    }
-    stage.close();
-	*array = map0[y][x];
+	if (!hasmap){
+		char cstagenum = '0' + n; //stage num int to char
+		char sstagenum[12] = {'s', 't', 'a', 'g', 'e', '/', cstagenum, '.', 't', 'x', 't', '\0'};
+		ifstream stage(sstagenum);
+		if(stage.fail())
+		{
+			printf("파일 없음");
+		}
+		stage >> *h >> *w;
+		for (int i = 0; i < *h; i++) {
+			for (int j = 0; j < *w; j++) {
+				int n;
+				stage >> n;
+				mapdata[i][j] = n;
+			}
+		}
+		stage.close();
+	}
+	*array = mapdata[y][x];
 }
 
 void pallete() { // 색 지정
