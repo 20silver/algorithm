@@ -116,6 +116,7 @@ void stageClear() {
 	mvprintw(7, 3, "$$          $$            $$          $$      $$   $$     $$ ");
 	mvprintw(8, 3, "$$          $$            $$          $$      $$   $$      $$ ");
 	mvprintw(9, 3, "$$$$$$$$$$  $$$$$$$$$$$$  $$$$$$$$$   $$      $$   $$       $$");
+	mvprintw(10, 3, "Please Press 'q' to exit!");
 }
 
 void nextStage() {
