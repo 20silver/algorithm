@@ -16,7 +16,7 @@ struct Object {
 #define N 30
 struct Object obj[N] = {};
 
-int wbox = 0, lev = 1, step = 0, push = 0, goal = 19;
+int wbox = 0, lev = 5, step = 0, push = 0, goal = 19;
 
 void levList(int *h, int *w, int *array, int y, int x, int n) {
 	char cstagenum = '0' + n; //stage num int to char
@@ -221,6 +221,7 @@ int main() {
 	int ch;
 	initscr();
 	keypad(stdscr, TRUE);
+	noecho();
 
 	if (!has_colors()) {
 		endwin();
