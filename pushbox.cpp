@@ -105,6 +105,14 @@ void Step_Push(int step, int push) {
 	mvprintw(3, 8, "Step: %d, Push: %d", step, push);
 }
 
+void stageClear() {
+	mvprintw(1, 1, "$$$$$$$  $$        $$$$$$$     $$$      $$$$$$ ");
+	mvprintw(2, 1, "$$       $$        $$         $$  $$    $$   $$");
+	mvprintw(3, 1, "$$       $$        $$$$$$$   $$$$$$$$   $$$$$$ ");
+	mvprintw(4, 1, "$$       $$        $$	     $$    $$   $$  $$ ");
+	mvprintw(5, 1, "$$$$$$$  $$$$$$$$  $$$$$$$   $$    $$   $$   $$");
+}
+
 void nextStage() {
 	bool flag;
 	for (int o = 1; o<=wbox; o++){
@@ -120,18 +128,11 @@ void nextStage() {
 		}
 	}
 	step = 0; push = 0; lev += 1;
+	if (lev == 6) {
+	 	stageClear();
+		return;
+	}
 	Level(lev);
-	// for(int o = 1; o <= wbox; o++) {
-	// 	goal++;
-	// 	if ((obj[goal].yPos == obj[o].yPos) && (obj[goal].xPos == obj[o].xPos)) {
-	// 		same++;
-	// 		if (same == wbox) {
-	// 			lev += 1;
-	// 			step = 0; push = 0;
-	// 			Level(lev);
-	// 		}
-	// 	}
-	// }
 }
 
 void Play(int input) {
