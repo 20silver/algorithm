@@ -26,6 +26,7 @@ public:
 
 	string bfsSolver();
 	string aStarSolver();
+	string dfsSolver();
 
 	double manhattan(Point c1, Point c2);
 	bool deadlockTest(State state);
