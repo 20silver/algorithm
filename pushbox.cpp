@@ -106,18 +106,32 @@ void Step_Push(int step, int push) {
 }
 
 void nextStage() {
-	int same = 0; goal = 19;
-	for(int o = 1; o <= wbox; o++) {
-		goal++;
-		if ((obj[goal].yPos == obj[o].yPos) && (obj[goal].xPos == obj[o].xPos)) {
-			same++;
-			if (same == wbox) {
-				lev += 1;
-				step = 0; push = 0;
-				Level(lev);
+	bool flag;
+	for (int o = 1; o<=wbox; o++){
+		flag = false;
+		for (int goal = 19; goal<=19+wbox; goal++){
+			if ((obj[o].yPos == obj[goal].yPos) && (obj[o].xPos == obj[goal].xPos)){
+				flag = true;
+				break;
 			}
 		}
+		if (!flag){
+			return;
+		}
 	}
+	step = 0; push = 0; lev += 1;
+	Level(lev);
+	// for(int o = 1; o <= wbox; o++) {
+	// 	goal++;
+	// 	if ((obj[goal].yPos == obj[o].yPos) && (obj[goal].xPos == obj[o].xPos)) {
+	// 		same++;
+	// 		if (same == wbox) {
+	// 			lev += 1;
+	// 			step = 0; push = 0;
+	// 			Level(lev);
+	// 		}
+	// 	}
+	// }
 }
 
 void Play(int input) {
