@@ -8,7 +8,6 @@
 #include <cstdlib>
 #include <deque>
 #include <iostream>
-#include <set>
 
 Level::Level(State state, vector<Point> goals, vector<Point> walls)
 {
@@ -48,15 +47,15 @@ vector<string> Level::possibleActions(State state)
 	iter2 = find(boxes.begin(), boxes.end(), newBox);
 	iter3 = find(walls.begin(), walls.end(), newBox);
 
-	if (iter == walls.end() && iter1 == boxes.end()) // 플레이어가 갈 방향에 벽이나 박스가 없고..
+	if (iter == walls.end() && iter1 == boxes.end()) // 플레이어가 갈 방향에 벽과 박스가 없고..
 	{
-		actionList.push_back("u");
+		actionList.push_back("u"); //move
 	}
 	else if (iter1 != boxes.end()) // 박스가 있다면? 푸쉬 가능한지
 	{
 		if (iter2 == boxes.end() && iter3 == walls.end())
 		{
-			actionList.push_back("U");
+			actionList.push_back("U"); // push
 		}
 	}
 
@@ -101,7 +100,7 @@ vector<string> Level::possibleActions(State state)
 	}
 
 	newPlayer.set(row, col - 1);
-	newBox.set(row, col - 1);
+	newBox.set(row, col - 2);
 
 	iter = find(walls.begin(), walls.end(), newPlayer);
 	iter1 = find(boxes.begin(), boxes.end(), newPlayer);
@@ -121,11 +120,11 @@ vector<string> Level::possibleActions(State state)
 	return actionList;
 }
 
+
+
 string Level::bfsSolver()
 {
 	string res = "";
-	int totalNode = 1;
-	int redundant = 0;
 	Node node(initialState, NULL, 0);
 
 	vector<string> actionList;
@@ -137,12 +136,9 @@ string Level::bfsSolver()
 	vector<State>::iterator it_visited;
 	deque<Node>::iterator it_q;
 
-	int tmpCount = 0;
-	
 	// visited에 넣기 전에 있는지 검사하기 
 	while (!q.empty())
 	{
-		tmpCount++;
 		node = q.front();
 		q.pop_front();
 		visited.push_back(node.where);
@@ -154,10 +150,9 @@ string Level::bfsSolver()
 		{
 			cout << "can go to " << actionList[i] << endl;
 			Node child = getChild(node, actionList[i]); // get child of current node
-				
+
 			cout << "past path of curr child : " << child.past << endl;
 
-			totalNode++;
 			it_visited = find(visited.begin(), visited.end(), child.where);
 			it_q = find(q.begin(), q.end(), child);
 			if (it_visited == visited.end() && it_q == q.end())
@@ -167,11 +162,48 @@ string Level::bfsSolver()
 				if (!deadlockTest(child.where))
 					q.push_back(child);
 			}
-			else redundant++;
 		}
 	}
+
 	res = "failed to solve";
 	return res;
+}
+
+string Level::dfsSolver()
+{
+	string res = "";
+	Node node(initialState, NULL, 0);
+
+	vector<string> actionList;
+	vector<State> visited;
+
+	deque<Node> s;
+
+	vector<State>::iterator it_visited;
+	deque<Node>::iterator it_s;
+
+	s.push_back(node);
+	while (!s.empty()) {
+		node = s.back();
+		s.pop_back();
+		visited.push_back(node.where);
+		actionList = possibleActions(node.where);
+		for (int i = 0; i < actionList.size(); i++)
+		{
+			Node child = getChild(node, actionList[i]);
+			it_visited = find(visited.begin(), visited.end(), child.where);
+			it_s = find(s.begin(), s.end(), child);
+			if (it_visited == visited.end() && it_s == s.end())
+			{
+				if (isSolved(child.where))
+					return child.past;
+				if (!deadlockTest(child.where))
+					s.push_back(child);
+			}
+		}
+	}
+
+	return "fail to solve";
 }
 
 bool Level::isSolved(State state)
@@ -266,7 +298,7 @@ Node Level::getChild(Node n, string action)
 			hasChild = true;
 		}
 		break;
-	case 'D' :
+	case 'D':
 	case 'd':
 		newPlayer.set(row + 1, col);
 		// 플레이어가 박스를 밀고 있음?
@@ -279,7 +311,7 @@ Node Level::getChild(Node n, string action)
 			hasChild = true;
 		}
 		break;
-	case 'L' :
+	case 'L':
 	case 'l':
 		newPlayer.set(row, col - 1);
 		// 플레이어가 박스를 밀고 있음?
