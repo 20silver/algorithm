@@ -137,6 +137,9 @@ void nextStage() {
 }
 
 void Play(int input) {
+	if (lev == 6){
+		return;
+	}
 	bool restart = FALSE;
 	int ymove = 0, xmove = 0;
 	chtype up, lf, dw, rg, oup, olf, odw, org, way = 35, wayobj;
