@@ -1,13 +1,8 @@
 //
-// Created by ÀÌ¿¬°æ on 30/11/2019.
+// Created by ï¿½Ì¿ï¿½ï¿½ï¿½ on 30/11/2019.
 //
 
-#include <string>
 #include "Level.h"
-#include "Node.h"
-#include <cstdlib>
-#include <deque>
-#include <iostream>
 
 Level::Level(State state, vector<Point> goals, vector<Point> walls)
 {
@@ -47,11 +42,11 @@ vector<string> Level::possibleActions(State state)
 	iter2 = find(boxes.begin(), boxes.end(), newBox);
 	iter3 = find(walls.begin(), walls.end(), newBox);
 
-	if (iter == walls.end() && iter1 == boxes.end()) // ÇÃ·¹ÀÌ¾î°¡ °¥ ¹æÇâ¿¡ º®°ú ¹Ú½º°¡ ¾ø°í..
+	if (iter == walls.end() && iter1 == boxes.end()) // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½..
 	{
 		actionList.push_back("u"); //move
 	}
-	else if (iter1 != boxes.end()) // ¹Ú½º°¡ ÀÖ´Ù¸é? Çª½¬ °¡´ÉÇÑÁö
+	else if (iter1 != boxes.end()) // ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½? Çªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		if (iter2 == boxes.end() && iter3 == walls.end())
 		{
@@ -68,11 +63,11 @@ vector<string> Level::possibleActions(State state)
 	iter2 = find(boxes.begin(), boxes.end(), newBox);
 	iter3 = find(walls.begin(), walls.end(), newBox);
 
-	if (iter == walls.end() && iter1 == boxes.end()) // ÇÃ·¹ÀÌ¾î°¡ °¥ ¹æÇâ¿¡ º®ÀÌ³ª ¹Ú½º°¡ ¾ø°í..
+	if (iter == walls.end() && iter1 == boxes.end()) // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½..
 	{
 		actionList.push_back("r");
 	}
-	else if (iter1 != boxes.end()) // ¹Ú½º°¡ ÀÖ´Ù¸é? Çª½¬ °¡´ÉÇÑÁö
+	else if (iter1 != boxes.end()) // ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½? Çªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		if (iter2 == boxes.end() && iter3 == walls.end())
 		{
@@ -87,11 +82,11 @@ vector<string> Level::possibleActions(State state)
 	iter1 = find(boxes.begin(), boxes.end(), newPlayer);
 	iter2 = find(boxes.begin(), boxes.end(), newBox);
 	iter3 = find(walls.begin(), walls.end(), newBox);
-	if (iter == walls.end() && iter1 == boxes.end()) // ÇÃ·¹ÀÌ¾î°¡ °¥ ¹æÇâ¿¡ º®ÀÌ³ª ¹Ú½º°¡ ¾ø°í..
+	if (iter == walls.end() && iter1 == boxes.end()) // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½..
 	{
 		actionList.push_back("d");
 	}
-	else if (iter1 != boxes.end()) // ¹Ú½º°¡ ÀÖ´Ù¸é? Çª½¬ °¡´ÉÇÑÁö
+	else if (iter1 != boxes.end()) // ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½? Çªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		if (iter2 == boxes.end() && iter3 == walls.end())
 		{
@@ -106,11 +101,11 @@ vector<string> Level::possibleActions(State state)
 	iter1 = find(boxes.begin(), boxes.end(), newPlayer);
 	iter2 = find(boxes.begin(), boxes.end(), newBox);
 	iter3 = find(walls.begin(), walls.end(), newBox);
-	if (iter == walls.end() && iter1 == boxes.end()) // ÇÃ·¹ÀÌ¾î°¡ °¥ ¹æÇâ¿¡ º®ÀÌ³ª ¹Ú½º°¡ ¾ø°í..
+	if (iter == walls.end() && iter1 == boxes.end()) // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½..
 	{
 		actionList.push_back("l");
 	}
-	else if (iter1 != boxes.end()) // ¹Ú½º°¡ ÀÖ´Ù¸é? Çª½¬ °¡´ÉÇÑÁö
+	else if (iter1 != boxes.end()) // ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½? Çªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		if (iter2 == boxes.end() && iter3 == walls.end())
 		{
@@ -136,7 +131,7 @@ string Level::bfsSolver()
 	vector<State>::iterator it_visited;
 	deque<Node>::iterator it_q;
 
-	// visited¿¡ ³Ö±â Àü¿¡ ÀÖ´ÂÁö °Ë»çÇÏ±â 
+	// visitedï¿½ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï±ï¿½ 
 	while (!q.empty())
 	{
 		node = q.front();
@@ -220,10 +215,10 @@ bool Level::isSolved(State state)
 
 // todo:
 string Level::aStarSolver() {
-	// ÀÏ´Ü ¹Ú½º ÇÏ³ª¸¸..
+	// ï¿½Ï´ï¿½ ï¿½Ú½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½..
 	Point goal = goals[0];
 
-	deque<Node> open;
+	vector<Node> open;
 	deque<Node> close;
 
 	// start node
@@ -235,38 +230,52 @@ string Level::aStarSolver() {
 
 	vector<string>actionList = possibleActions(initialState);
 	deque<Node>::iterator it_close;
-	deque<Node>::iterator it_open;
+	vector<Node>::iterator it_open;
 
-	while ( /*!open.empty() */ tmpCount < 10)
+	while (!open.empty())
 	{
 		cout << "====ITERATION COUNT " << tmpCount << "======" << endl;
-		Node curr = open.front();
-		open.pop_front();
+		//// openì—ì„œ ê°€ìž¥ ìž‘ì€ ë¹„ìš© ë…¸ë“œë¥¼ ê°€ì ¸ì˜¨ ê²ƒì´ currê°€ ë¨..
+		auto it = min_element(open.begin(), open.end());
+		Node curr = *min_element(open.begin(), open.end());
+		open.erase(it);
 
+		if(isSolved(curr.where)) return curr.past;
+
+		if(deadlockTest(curr.where)) continue;
 		close.push_back(curr);
 
 		vector<string>actionList = possibleActions(curr.where);
 		cout << "current pos : " << curr.where.player.getRow() << ", " << curr.where.player.getCol() << endl;
-		cout << "Action list size : " << actionList.size() << endl;
 
 		for (int i = 0; i < actionList.size(); i++)
 		{
 			Node child = getChild(curr, actionList[i]);
-			// ´Ý ¸ñ·Ï¿¡ ÀÖ´ÂÁö °Ë»ç
+			cout << "child :" << child.past << endl;
+			// ï¿½ï¿½ ï¿½ï¿½Ï¿ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
+			child.move += 1;
 			it_close = find(close.begin(), close.end(), child);
 			it_open = find(open.begin(), open.end(), child);
-			if (it_close == close.end() && it_open == open.end())
-			{
-				child.h = child.getDist(goal); // ÈÞ¸®½ºÆ½ ÃßÁ¤°ª
-				cout << "child value check" << child.move << " " << child.h << endl;
-				open.push_back(child);
-			}
+			if (it_close == close.end() && it_open == open.end()) {
+                child.h = child.getDist(goal); // ï¿½Þ¸ï¿½ï¿½ï¿½Æ½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                cout << "child value check " << child.move << " " << child.h << endl;
+                open.push_back(child);
+            }
+			if(it_close != close.end())
+            {
+                if((*it).move > child.move) (*it) = child;
+            }
 			//open.push_back(child);
 		}
 
 		tmpCount++;
 	}
 	return "No Solution";
+}
+
+bool Level::aStarCompare(const Node& n1, const Node& n2)
+{
+    return n1 < n2;
 }
 
 Node Level::getChild(Node n, string action)
@@ -288,7 +297,7 @@ Node Level::getChild(Node n, string action)
 	case 'U':
 	case 'u':
 		newPlayer.set(row - 1, col);
-		// ÇÃ·¹ÀÌ¾î°¡ ¹Ú½º¸¦ ¹Ð°í ÀÖÀ½?
+		// ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ð°ï¿½ ï¿½ï¿½ï¿½ï¿½?
 		it = find(boxes.begin(), boxes.end(), newPlayer);
 		if (it != boxes.end())
 		{
@@ -301,7 +310,7 @@ Node Level::getChild(Node n, string action)
 	case 'D':
 	case 'd':
 		newPlayer.set(row + 1, col);
-		// ÇÃ·¹ÀÌ¾î°¡ ¹Ú½º¸¦ ¹Ð°í ÀÖÀ½?
+		// ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ð°ï¿½ ï¿½ï¿½ï¿½ï¿½?
 		it = find(boxes.begin(), boxes.end(), newPlayer);
 		if (it != boxes.end())
 		{
@@ -314,7 +323,7 @@ Node Level::getChild(Node n, string action)
 	case 'L':
 	case 'l':
 		newPlayer.set(row, col - 1);
-		// ÇÃ·¹ÀÌ¾î°¡ ¹Ú½º¸¦ ¹Ð°í ÀÖÀ½?
+		// ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ð°ï¿½ ï¿½ï¿½ï¿½ï¿½?
 		it = find(boxes.begin(), boxes.end(), newPlayer);
 		if (it != boxes.end())
 		{
@@ -327,7 +336,7 @@ Node Level::getChild(Node n, string action)
 	case 'R':
 	case 'r':
 		newPlayer.set(row, col + 1);
-		// ÇÃ·¹ÀÌ¾î°¡ ¹Ú½º¸¦ ¹Ð°í ÀÖÀ½?
+		// ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ð°ï¿½ ï¿½ï¿½ï¿½ï¿½?
 		it = find(boxes.begin(), boxes.end(), newPlayer);
 		if (it != boxes.end())
 		{

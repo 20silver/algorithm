@@ -1,5 +1,5 @@
 //
-// Created by ÀÌ¿¬°æ on 30/11/2019.
+// Created by ï¿½Ì¿ï¿½ï¿½ï¿½ on 30/11/2019.
 //
 
 #ifndef LEVEL_H
@@ -11,6 +11,11 @@
 
 #include <algorithm>
 #include <string>
+
+#include <cstdlib>
+#include <deque>
+#include <iostream>
+#include <queue>
 
 class Level {
 
@@ -31,6 +36,8 @@ public:
 	double manhattan(Point c1, Point c2);
 	bool deadlockTest(State state);
 	bool setContains(vector<Point> argset, int row, int col);
+
+	bool aStarCompare(const Node& n1, const Node& n2) ;
 
 };
 

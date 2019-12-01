@@ -1,5 +1,5 @@
 //
-// Created by ÀÌ¿¬°æ on 30/11/2019.
+// Created by ï¿½Ì¿ï¿½ï¿½ï¿½ on 30/11/2019.
 //
 
 #ifndef NODE_H
@@ -15,7 +15,7 @@ public:
 	int move;
 	State where;
 	int h;
-	int f() { return move + h; }
+	int f() const { return move + h; }
 
 	string past;
 
@@ -23,6 +23,7 @@ public:
 	double getDist(Point goal);
 
 	bool operator==(const Node& n) const;
+    bool operator<(const Node& n) const;
 };
 
 

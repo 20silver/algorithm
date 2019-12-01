@@ -1,5 +1,5 @@
 //
-// Created by ÀÌ¿¬°æ on 30/11/2019.
+// Created by ï¿½Ì¿ï¿½ï¿½ï¿½ on 30/11/2019.
 //
 
 #include "Node.h"
@@ -18,7 +18,9 @@ double Node::getDist(Point goal)
 
 bool Node::operator==(const Node& n) const
 {
-	return this->where == n.where &&
-		this->parent == n.parent &&
-		this->move == n.move;
+	return this->where == n.where ;
+}
+bool Node::operator<(const Node& n) const
+{
+    return this->f() < n.f();
 }
