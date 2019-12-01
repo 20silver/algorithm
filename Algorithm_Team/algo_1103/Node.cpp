@@ -11,7 +11,7 @@ Node::Node(State where, Node* parent, int move)
 	this->move = move;
 	past = " ";
 }
-double Node::getDist(Point goal)
+int Node::getDist(Point goal)
 {
 	return abs(this->where.player.row - goal.row) + abs(this->where.player.col - goal.col);
 }

@@ -253,18 +253,25 @@ string Level::aStarSolver() {
 			Node child = getChild(curr, actionList[i]);
 			cout << "child :" << child.past << endl;
 			// �� ��Ͽ� �ִ��� �˻�
-			child.move += 1;
 			it_close = find(close.begin(), close.end(), child);
 			it_open = find(open.begin(), open.end(), child);
-			if (it_close == close.end() && it_open == open.end()) {
-                child.h = child.getDist(goal); // �޸���ƽ ������
-                cout << "child value check " << child.move << " " << child.h << endl;
-                open.push_back(child);
-            }
-			if(it_close != close.end())
+            if(it_close == close.end())
             {
-                if((*it).move > child.move) (*it) = child;
+                child.move += 1;
+                child.h = child.getDist(goal);
+
+                if(it_open != open.end() && (*it_open).move > child.move) (*it_open) = child;
+                else open.push_back(child);
             }
+//			if (it_close == close.end() && it_open == open.end()) {
+//                child.move += 1;
+//                child.h = child.getDist(goal); // �޸���ƽ ������
+//                open.push_back(child);
+//            }
+//			else if(it_open != open.end())
+//            {
+//                if((*it_open).move > child.move) (*it_open) = child;
+//            }
 			//open.push_back(child);
 		}
 

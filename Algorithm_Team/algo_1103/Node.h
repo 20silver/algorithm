@@ -20,7 +20,7 @@ public:
 	string past;
 
 	Node(State where, Node* parent, int move);
-	double getDist(Point goal);
+	int getDist(Point goal);
 
 	bool operator==(const Node& n) const;
     bool operator<(const Node& n) const;
