@@ -10,17 +10,17 @@ Level::Level(State state, vector<Point> goals, vector<Point> walls)
 	this->goals = goals;
 	this->walls = walls;
 
-	cout << "=== init level ===" << endl;
-	cout << "-- walls --" << endl;
-	for (int i = 0; i < walls.size(); i++)
-	{
-		cout << walls[i].getRow() << ", " << walls[i].getCol() << endl;
-	}
-	cout << "-- boxes --" << endl;
-	for (int i = 0; i < state.boxes.size(); i++)
-	{
-		cout << state.boxes[i].getRow() << ", " << state.boxes[i].getCol() << endl;
-	}
+	//cout << "=== init level ===" << endl;
+	//cout << "-- walls --" << endl;
+	// for (int i = 0; i < walls.size(); i++)
+	// {
+	// 	cout << walls[i].getRow() << ", " << walls[i].getCol() << endl;
+	// }
+	// cout << "-- boxes --" << endl;
+	// for (int i = 0; i < state.boxes.size(); i++)
+	// {
+	// 	cout << state.boxes[i].getRow() << ", " << state.boxes[i].getCol() << endl;
+	// }
 }
 vector<string> Level::possibleActions(State state)
 {
@@ -138,15 +138,15 @@ string Level::bfsSolver()
 		q.pop_front();
 		visited.push_back(node.where);
 
-		cout << "---curr node position" << node.where.player.getRow() << "," << node.where.player.getCol() << endl;
+//		cout << "---curr node position" << node.where.player.getRow() << "," << node.where.player.getCol() << endl;
 
 		actionList = possibleActions(node.where); //get possible action list of current state
 		for (int i = 0; i < actionList.size(); i++)
 		{
-			cout << "can go to " << actionList[i] << endl;
+//			cout << "can go to " << actionList[i] << endl;
 			Node child = getChild(node, actionList[i]); // get child of current node
 
-			cout << "past path of curr child : " << child.past << endl;
+//			cout << "past path of curr child : " << child.past << endl;
 
 			it_visited = find(visited.begin(), visited.end(), child.where);
 			it_q = find(q.begin(), q.end(), child);

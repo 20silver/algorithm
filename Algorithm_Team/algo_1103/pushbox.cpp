@@ -11,7 +11,6 @@
 #include "State.h"
 #include "Level.h"
 #include "Node.h"
-#include "algo_1103.cpp"
 
 using namespace std;
 
@@ -240,7 +239,8 @@ void Play(int input) {
 }
 
 
-static string loadFile(int stage)
+
+string loadFile(int stage)
 {
 	ifstream fin;
 	switch (stage) {
@@ -257,7 +257,7 @@ static string loadFile(int stage)
 		fin.open("stage/4.txt");
 		break;
 	case 5:
-		fin.open("state/5.txt");
+		fin.open("stage/5.txt");
 		break;
 	}
 
@@ -266,14 +266,14 @@ static string loadFile(int stage)
 	Point tmp;
 	int h, w;
 	fin >> h >> w;
-	cout << "height : " << h << " width : " << w << endl;
+//	cout << "height : " << h << " width : " << w << endl;
 
 	for (int i = 0; i < h; i++)
 	{
 		for (int j = 0; j < w; j++)
 		{
 			int c; fin >> c;
-			cout << c << " ";
+//			cout << c << " ";
 			if (c == 1) //walls
 			{
 				tmp.setRow(i);
@@ -297,18 +297,17 @@ static string loadFile(int stage)
 				player.setCol(j);
 				player.setRow(i);
 			}
-		}
-		cout << endl;
-
-		State init_state(boxes, player);
-		Level level(init_state, goals, walls);
-		string res = level.bfsSolver();
-
-		cout << "result : " << res << endl;
-
-		return res;
+		}		
 	}
+	State init_state(boxes, player);
+	Level level(init_state, goals, walls);
+	string res = level.bfsSolver();
+
+//	cout << "result : " << res << endl;
+	return res;
 }
+
+
 
 
 
@@ -337,7 +336,7 @@ int main() {
 	// 여기가 알고리즘 자동으로 실행하는 부분...
 	else {
 		do{
-			string inputstr = loadFile(1);
+			string inputstr = loadFile(lev);
 			// string inputstr = "uUdlUdrrU";
 			for (int i = 0; i<inputstr.length(); i++){
 				int input = inputstr[i] - 1;
