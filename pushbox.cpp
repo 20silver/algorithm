@@ -56,7 +56,7 @@ void pallete() { // 색 지정
 void Level(int n) { // 숫자 - 스테이지 변환
 	clear();
 	mvprintw(1, 8, "< S O K O B A N > Level: %d", lev);
-	mvprintw(2, 1, "Move- Arrow, Restart-R, Exit-Q");
+	mvprintw(2, 1, "Move - Arrow, Restart - R, Exit - Q, Auto - A");
 	mvprintw(3, 8, "Step: %d, Push: %d", step, push);
 	int x = 0, y = 0, h = 1, w = 1, map;
 	wbox = 0; goal = 19;
