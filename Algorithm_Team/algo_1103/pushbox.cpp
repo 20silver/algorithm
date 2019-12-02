@@ -14,6 +14,8 @@
 
 using namespace std;
 
+Level *solver;
+
 struct Object {
 	int xPos;
 	int yPos;
@@ -127,7 +129,7 @@ void Level_UI(int n) { // 숫자 - 스테이지 변환
 	}
 
 	State init_state(boxes, player);
-	Level level(init_state, goals, walls);
+	solver = new Level(init_state, goals, walls);
 
 	move(obj[0].yPos, obj[0].xPos);
 }
@@ -282,7 +284,7 @@ int main() {
 	// 여기가 알고리즘 자동으로 실행하는 부분...
 	else {
 		do{
-			string inputstr = level.bfsSolver();
+			string inputstr = solver->bfsSolver();
 			// string inputstr = "uUdlUdrrU";
 			for (int i = 0; i<inputstr.length(); i++){
 				int input = inputstr[i] - 1;
