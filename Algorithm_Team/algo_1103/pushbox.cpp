@@ -11,10 +11,9 @@
 #include "State.h"
 #include "Level.h"
 #include "Node.h"
+#include "algo_1103.cpp"
 
 using namespace std;
-
-Level *solver;
 
 struct Object {
 	int xPos;
@@ -80,12 +79,7 @@ void Level_UI(int n) { // 숫자 - 스테이지 변환
 			levList(&h, &w, &map, y, x, n);
 			switch(map) {
 				case 0: mvaddch(y + 4, x + 10, '-' | COLOR_PAIR(4)); break; // 벽 내부
-				case 1: mvaddch(y + 4, x + 10, '#' | COLOR_PAIR(1)); 
-
-					tmp.setRow(y);
-					tmp.setCol(x);
-					walls.push_back(tmp); 
-					break; // 벽
+				case 1: mvaddch(y + 4, x + 10, '#' | COLOR_PAIR(1)); break; // 벽
 				case 2: // 상자
 					mvaddch(y + 4, x + 10, '-' | COLOR_PAIR(4));
 					wbox += 1;
@@ -94,10 +88,6 @@ void Level_UI(int n) { // 숫자 - 스테이지 변환
 					obj[wbox].xPos = x + 10;
 					obj[wbox].zn = '@';
 					mvaddch(obj[wbox].yPos, obj[wbox].xPos, obj[wbox].zn | COLOR_PAIR(5));
-
-					tmp.setRow(y);
-					tmp.setCol(x);
-					boxes.push_back(tmp);
 					break;
 				case 3: //목적지
 					goal += 1;
@@ -107,10 +97,6 @@ void Level_UI(int n) { // 숫자 - 스테이지 변환
 					obj[goal].xPos = x + 10;
 					obj[goal].zn = 'x';
 					mvaddch(obj[goal].yPos, obj[goal].xPos, obj[goal].zn | COLOR_PAIR(3));
-
-					tmp.setRow(y);
-					tmp.setCol(x);
-					goals.push_back(tmp);
 					break;
 				case 4: mvaddch(y + 4, x + 10, '+' | COLOR_PAIR(6)); break; // 벽 외부
 				case 5: // 플레이어
@@ -120,16 +106,10 @@ void Level_UI(int n) { // 숫자 - 스테이지 변환
 					obj[0].xPos = x + 10;
 					obj[0].zn = 'P';
 					mvaddch(obj[0].yPos, obj[0].xPos, obj[0].zn | COLOR_PAIR(2));
-
-					player.setCol(y);
-					player.setRow(x);
 					break;
 			}
 		}
 	}
-
-	State init_state(boxes, player);
-	solver = new Level(init_state, goals, walls);
 
 	move(obj[0].yPos, obj[0].xPos);
 }
@@ -259,6 +239,79 @@ void Play(int input) {
 	} else restart = FALSE;
 }
 
+
+static string loadFile(int stage)
+{
+	ifstream fin;
+	switch (stage) {
+	case 1:
+		fin.open("stage/1.txt");
+		break;
+	case 2:
+		fin.open("stage/2.txt");
+		break;
+	case 3:
+		fin.open("stage/3.txt");
+		break;
+	case 4:
+		fin.open("stage/4.txt");
+		break;
+	case 5:
+		fin.open("state/5.txt");
+		break;
+	}
+
+	vector<Point> walls, goals, boxes;
+	Point player;
+	Point tmp;
+	int h, w;
+	fin >> h >> w;
+	cout << "height : " << h << " width : " << w << endl;
+
+	for (int i = 0; i < h; i++)
+	{
+		for (int j = 0; j < w; j++)
+		{
+			int c; fin >> c;
+			cout << c << " ";
+			if (c == 1) //walls
+			{
+				tmp.setRow(i);
+				tmp.setCol(j);
+				walls.push_back(tmp);
+			}
+			else if (c == 2) //box
+			{
+				tmp.setRow(i);
+				tmp.setCol(j);
+				boxes.push_back(tmp);
+			}
+			else if (c == 3) // goal
+			{
+				tmp.setRow(i);
+				tmp.setCol(j);
+				goals.push_back(tmp);
+			}
+			else if (c == 5) // player
+			{
+				player.setCol(j);
+				player.setRow(i);
+			}
+		}
+		cout << endl;
+
+		State init_state(boxes, player);
+		Level level(init_state, goals, walls);
+		string res = level.bfsSolver();
+
+		cout << "result : " << res << endl;
+
+		return res;
+	}
+}
+
+
+
 int main() {
 	int ch;
 	initscr();
@@ -284,7 +337,7 @@ int main() {
 	// 여기가 알고리즘 자동으로 실행하는 부분...
 	else {
 		do{
-			string inputstr = solver->bfsSolver();
+			string inputstr = loadFile(1);
 			// string inputstr = "uUdlUdrrU";
 			for (int i = 0; i<inputstr.length(); i++){
 				int input = inputstr[i] - 1;
