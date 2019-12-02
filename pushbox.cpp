@@ -3,6 +3,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <string>
+#include <unistd.h>
 
 using namespace std;
 
@@ -158,25 +159,29 @@ void Play(int input) {
 	for(int o = 0; o <= wbox; o++) { mvaddch(obj[o].yPos, obj[o].xPos, obj[o].ozn);}
 
 	switch(input) { // 방향키 제어
-		case 'w':
+		case 't':
+		case 'T':
 		case KEY_UP:
 			ymove = -1;
 			way = up;
 			wayobj = oup;
 			break;
-		case 's':
+		case 'c':
+		case 'C':
 		case KEY_DOWN:
 			ymove = 1;
 			way = dw;
 			wayobj = odw;
 			break;
-		case 'a':
+		case 'k':
+		case 'K':
 		case KEY_LEFT:
 			xmove = -1;
 			way = lf;
 			wayobj = olf;
 			break;
-		case 'd':
+		case 'q':
+		case 'Q':
 		case KEY_RIGHT:
 			xmove = 1;
 			way = rg;
@@ -237,10 +242,23 @@ int main() {
 	pallete();
 
 	Level(lev);
-
-	while ((ch = getch()) != 'q') {
-		Play(ch);
+	if (getch() != 'a'){
+		while ((ch = getch()) != 'q') {
+			Play(ch);
+		}
 	}
+	else {
+		do{
+			string inputstr = "uUdlUdrrU";
+			for (int i = 0; i<inputstr.length(); i++){
+				int input = inputstr[i] - 1;
+				Play(input);
+				usleep(400000);
+				refresh();
+			}
+		}while ((ch = getch()) != 'q');
+	}
+	
 	endwin();
 
 	return 0;
