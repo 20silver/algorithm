@@ -64,7 +64,9 @@ void loadFile()
 	cout << "result : " << res << endl;
 }
 
+/*
 int main() {
 	loadFile();
 	return 0;
 }
+*/
