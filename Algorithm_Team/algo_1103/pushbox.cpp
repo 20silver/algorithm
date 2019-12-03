@@ -24,7 +24,7 @@ struct Object {
 #define N 30
 struct Object obj[N] = {};
 
-int wbox = 0, lev = 1, step = 0, push = 0, goal = 19;
+int wbox = 0, lev = 5, step = 0, push = 0, goal = 19;
 bool hasmap = false;
 int mapdata[10][10];
 
@@ -336,7 +336,10 @@ int main() {
 	// 여기가 알고리즘 자동으로 실행하는 부분...
 	else {
 		do{
+			mvprintw(3, 25, "solving...");
+			refresh();
 			string inputstr = loadFile(lev);
+			mvprintw(3, 25, "solved!   ");
 			// string inputstr = "uUdlUdrrU";
 			for (int i = 0; i<inputstr.length(); i++){
 				int input = inputstr[i] - 1;
