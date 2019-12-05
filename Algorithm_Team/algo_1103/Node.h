@@ -12,15 +12,17 @@
 class Node {
 public:
 	Node* parent;
-	int move;
 	State where;
-	int h;
-	int f() const { return move + h; }
+    float move;
+    float h;
+    float f() const { return move + h; }
 
 	string past;
 
-	Node(State where, Node* parent, int move);
-	int getDist(Point goal);
+	Node() {};
+	Node(State where, Node* parent, float move);
+    float getDist(Point& goal);
+    float getH(vector<Point>& goals);
 
 	bool operator==(const Node& n) const;
     bool operator<(const Node& n) const;

@@ -1,5 +1,5 @@
 //
-// Created by ÀÌ¿¬°æ on 30/11/2019.
+// Created by ï¿½Ì¿ï¿½ï¿½ï¿½ on 30/11/2019.
 //
 
 #include "State.h"
@@ -29,6 +29,10 @@ int State::hashCode() const
 
 bool State::operator==(const State& n) const
 {
-	return this->boxes == n.boxes &&
-		this->player == n.player;
+	//return this->boxes == n.boxes && this->player == n.player;
+	//return this->hashCode() == n.hashCode();
+
+	if (this->hashCode() == n.hashCode()) return true;
+	if ((this->boxes == n.boxes) && (this->player == n.player)) return true;
+	return false;
 }

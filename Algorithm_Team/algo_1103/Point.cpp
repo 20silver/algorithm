@@ -1,5 +1,5 @@
 //
-// Created by ÀÌ¿¬°æ on 30/11/2019.
+// Created by ï¿½Ì¿ï¿½ï¿½ï¿½ on 30/11/2019.
 //
 
 #include "Point.h"

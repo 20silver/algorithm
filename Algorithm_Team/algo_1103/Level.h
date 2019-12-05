@@ -25,19 +25,18 @@ public:
 	vector<Point> goals;
 
 	Level(State, vector<Point>, vector<Point>);
-	vector<string> possibleActions(State state);
-	Node getChild(Node n, string action);
-	bool isSolved(State state);
+	
+	string solve(string method);
 
 	string bfsSolver();
 	string aStarSolver();
 	string dfsSolver();
 
-	double manhattan(Point c1, Point c2);
-	bool deadlockTest(State state);
-	bool setContains(vector<Point> argset, int row, int col);
-
-	bool aStarCompare(const Node& n1, const Node& n2) ;
+	bool deadlockTest(State& state);
+	bool setContains(vector<Point>& argset, const int& row, const int& col);
+	vector<string> possibleActions(State& state);
+	Node getChild(Node& n, string action);
+	bool isSolved(State& state);
 
 };
 

@@ -3,6 +3,9 @@
 //
 
 #include "Level.h"
+#include <set>
+#include <list>
+
 
 Level::Level(State state, vector<Point> goals, vector<Point> walls)
 {
@@ -10,21 +13,33 @@ Level::Level(State state, vector<Point> goals, vector<Point> walls)
 	this->goals = goals;
 	this->walls = walls;
 
-	//cout << "=== init level ===" << endl;
-	//cout << "-- walls --" << endl;
-	// for (int i = 0; i < walls.size(); i++)
-	// {
-	// 	cout << walls[i].getRow() << ", " << walls[i].getCol() << endl;
-	// }
-	// cout << "-- boxes --" << endl;
-	// for (int i = 0; i < state.boxes.size(); i++)
-	// {
-	// 	cout << state.boxes[i].getRow() << ", " << state.boxes[i].getCol() << endl;
-	// }
+	cout << "=== init level ===" << endl;
+	cout << "-- walls --" << endl;
+	for (int i = 0; i < walls.size(); i++)
+	{
+		cout << walls[i].getRow() << ", " << walls[i].getCol() << endl;
+	}
+	cout << "-- boxes --" << endl;
+	for (int i = 0; i < state.boxes.size(); i++)
+	{
+		cout << state.boxes[i].getRow() << ", " << state.boxes[i].getCol() << endl;
+	}
 }
-vector<string> Level::possibleActions(State state)
+
+string Level::solve(string method)
+{
+	string res;
+	if (method == "bfs") res = bfsSolver();
+	else if (method == "dfs") res = dfsSolver();
+	else if (method == "astar") res = aStarSolver();
+	return res;
+}
+
+
+vector<string> Level::possibleActions(State& state)
 {
 	vector<string> actionList;
+	actionList.reserve(4);
 	int row = state.player.row;
 	int col = state.player.col;
 	vector<Point> boxes = state.boxes;
@@ -114,9 +129,6 @@ vector<string> Level::possibleActions(State state)
 	}
 	return actionList;
 }
-
-
-
 string Level::bfsSolver()
 {
 	string res = "";
@@ -131,22 +143,26 @@ string Level::bfsSolver()
 	vector<State>::iterator it_visited;
 	deque<Node>::iterator it_q;
 
+	int itrCount = 0;
+
 	// visited�� �ֱ� ���� �ִ��� �˻��ϱ� 
 	while (!q.empty())
 	{
+		cout << ++itrCount << endl;
+
 		node = q.front();
 		q.pop_front();
 		visited.push_back(node.where);
 
-//		cout << "---curr node position" << node.where.player.getRow() << "," << node.where.player.getCol() << endl;
+		//	cout << "---curr node position" << node.where.player.getRow() << "," << node.where.player.getCol() << endl;
 
 		actionList = possibleActions(node.where); //get possible action list of current state
 		for (int i = 0; i < actionList.size(); i++)
 		{
-//			cout << "can go to " << actionList[i] << endl;
+			//	cout << "can go to " << actionList[i] << endl;
 			Node child = getChild(node, actionList[i]); // get child of current node
 
-//			cout << "past path of curr child : " << child.past << endl;
+	///		cout << "past path of curr child : " << child.past << endl;
 
 			it_visited = find(visited.begin(), visited.end(), child.where);
 			it_q = find(q.begin(), q.end(), child);
@@ -201,7 +217,7 @@ string Level::dfsSolver()
 	return "fail to solve";
 }
 
-bool Level::isSolved(State state)
+bool Level::isSolved(State& state)
 {
 	vector<Point>::iterator it_goal, it_box;
 	for (it_box = state.boxes.begin(); it_box != state.boxes.end(); it_box++)
@@ -213,90 +229,122 @@ bool Level::isSolved(State state)
 	return true;
 }
 
+void setPrint(list<Node> set, int min)
+{
+	cout << "set print" << endl;
+	if (min > 0)
+	{
+		while (set.size() != 0)
+		{
+			if (set.front().f() == min)
+			{
+				cout << set.front().move << " " << set.front().h << endl;
+				cout << set.front().past << endl;
+			}
+			set.erase(set.begin());
+		}
+		return;
+	}
+	list<Node>::iterator it = set.begin();
+	while (set.size() != 0)
+	{
+
+		cout << set.front().move << " " << set.front().h << endl;
+		cout << set.front().past << endl;
+
+		set.erase(set.begin());
+
+	}
+}
+
 // todo:
 string Level::aStarSolver() {
-	// �ϴ� �ڽ� �ϳ���..
-	Point goal = goals[0];
 
-	vector<Node> open;
-	deque<Node> close;
+	list<Node> open;
+	set<Node> close;
 
 	// start node
-	Node start(initialState, nullptr, 0);
-	start.h = 0;
-	open.push_back(start);
+	Node curr(initialState, nullptr, 0.0f);
+	Node child;
+
+	curr.h = 0.0f;
+	open.push_back(curr);
 
 	int tmpCount = 0;
 
-	vector<string>actionList = possibleActions(initialState);
-	deque<Node>::iterator it_close;
-	vector<Node>::iterator it_open;
+	vector<string>actionList;
+	list<Node>::iterator it_open;
+	list<Node>::reverse_iterator rit_open;
+	set<Node>::iterator it_close;
 
 	while (!open.empty())
 	{
+		tmpCount++;
 		cout << "====ITERATION COUNT " << tmpCount << "======" << endl;
+
 		//// open에서 가장 작은 비용 노드를 가져온 것이 curr가 됨..
-		auto it = min_element(open.begin(), open.end());
-		Node curr = *min_element(open.begin(), open.end());
-		open.erase(it);
+		it_open = min_element(open.begin(), open.end());
+		curr = *it_open;
+		//		cout << "curr " << curr.h << curr.move << curr.f() << endl;
+		//		setPrint(open, 0);
+		open.erase(it_open);
+		//	open.erase((++rit_open).base());
 
-		if(isSolved(curr.where)) return curr.past;
-
-		if(deadlockTest(curr.where)) continue;
-		close.push_back(curr);
-
-		vector<string>actionList = possibleActions(curr.where);
-		cout << "current pos : " << curr.where.player.getRow() << ", " << curr.where.player.getCol() << endl;
-
-		for (int i = 0; i < actionList.size(); i++)
+		if (isSolved(curr.where))
 		{
-			Node child = getChild(curr, actionList[i]);
-			cout << "child :" << child.past << endl;
-			// �� ��Ͽ� �ִ��� �˻�
-			it_close = find(close.begin(), close.end(), child);
-			it_open = find(open.begin(), open.end(), child);
-            if(it_close == close.end())
-            {
-                child.move += 1;
-                child.h = child.getDist(goal);
-
-                if(it_open != open.end() && (*it_open).move > child.move) (*it_open) = child;
-                else open.push_back(child);
-            }
-//			if (it_close == close.end() && it_open == open.end()) {
-//                child.move += 1;
-//                child.h = child.getDist(goal); // �޸���ƽ ������
-//                open.push_back(child);
-//            }
-//			else if(it_open != open.end())
-//            {
-//                if((*it_open).move > child.move) (*it_open) = child;
-//            }
-			//open.push_back(child);
+			cout << "iter count : " << tmpCount << endl;
+			cout << "open size : " << open.size() << endl;
+			cout << "close size : " << close.size() << endl;
+			return curr.past;
 		}
 
-		tmpCount++;
+		close.insert(curr);
+
+		//		cout << "closed path : " << curr.past << endl;
+
+		actionList = possibleActions(curr.where);
+		//cout << "current pos : " << curr.where.player.getRow() << ", " << curr.where.player.getCol() << endl;
+
+		for (const auto& i : actionList)
+		{
+			child = getChild(curr, i);
+			//cout << "child :" << child.past << endl;
+			if (deadlockTest(child.where)) continue;
+
+			it_close = find(close.begin(), close.end(), child);
+			if (it_close != close.end())
+			{
+				continue;
+			}
+
+
+			it_open = find(open.begin(), open.end(), child);
+
+			child.h = child.getH(goals);
+
+			if (it_open != open.end())
+			{
+				if (child.move < (*it_open).move) (*it_open) = child;
+			}
+			else
+				open.push_back(child);
+		}
 	}
+
 	return "No Solution";
 }
 
-bool Level::aStarCompare(const Node& n1, const Node& n2)
-{
-    return n1 < n2;
-}
-
-Node Level::getChild(Node n, string action)
+Node Level::getChild(Node& n, string action)
 {
 	int row = n.where.player.getRow();
 	int col = n.where.player.getCol();
-	int curMove = n.move;
+	float move = n.move + 1.0f;
 
 	Point newPlayer;
 	Point newBox;
 	vector<Point> boxes = n.where.boxes;
 
 	vector<Point>::iterator it;
-	bool hasChild = false;
 
 	char dir = action[0];
 	switch (dir)
@@ -311,7 +359,6 @@ Node Level::getChild(Node n, string action)
 			Point newBox(row - 2, col);
 			boxes.erase(it);
 			boxes.push_back(newBox);
-			hasChild = true;
 		}
 		break;
 	case 'D':
@@ -324,7 +371,6 @@ Node Level::getChild(Node n, string action)
 			Point newBox(row + 2, col);
 			boxes.erase(it);
 			boxes.push_back(newBox);
-			hasChild = true;
 		}
 		break;
 	case 'L':
@@ -337,7 +383,6 @@ Node Level::getChild(Node n, string action)
 			Point newBox(row, col - 2);
 			boxes.erase(it);
 			boxes.push_back(newBox);
-			hasChild = true;
 		}
 		break;
 	case 'R':
@@ -350,23 +395,18 @@ Node Level::getChild(Node n, string action)
 			Point newBox(row, col + 2);
 			boxes.erase(it);
 			boxes.push_back(newBox);
-			hasChild = true;
 		}
 		break;
 	}
 
 	State new_state(boxes, newPlayer);
-	Node res(new_state, &n, curMove + 1);
+	Node res(new_state, &n, move);
 	res.past = n.past + action;
 	return res;
 }
 
-double Level::manhattan(Point c1, Point c2)
-{
-	return abs(c1.row - c2.row) + abs(c1.col - c2.col);
-}
 
-bool Level::deadlockTest(State state) {
+bool Level::deadlockTest(State& state) {
 	vector<Point>::iterator it;
 	for (it = state.boxes.begin(); it != state.boxes.end(); it++) {
 		int row = (*it).row;
@@ -406,7 +446,7 @@ bool Level::deadlockTest(State state) {
 	return false;
 }
 
-bool Level::setContains(vector<Point> argset, int row, int col) {
+bool Level::setContains(vector<Point>& argset, const int& row, const int& col) {
 	Point temp(row, col);
 	vector<Point>::iterator iter;
 	iter = find(argset.begin(), argset.end(), temp);
