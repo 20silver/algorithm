@@ -36,3 +36,8 @@ bool State::operator==(const State& n) const
 	if ((this->boxes == n.boxes) && (this->player == n.player)) return true;
 	return false;
 }
+
+bool State::operator<(const State& n) const
+{
+	return this->hashCode() < n.hashCode();
+}

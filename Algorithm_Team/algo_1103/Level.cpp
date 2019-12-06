@@ -135,7 +135,9 @@ string Level::bfsSolver()
 	Node node(initialState, NULL, 0);
 
 	vector<string> actionList;
-	vector<State> visited;
+	actionList.reserve(4);
+
+	set<State> visited;
 
 	deque<Node> q;
 	q.push_back(node);
@@ -148,25 +150,22 @@ string Level::bfsSolver()
 	// visited�� �ֱ� ���� �ִ��� �˻��ϱ� 
 	while (!q.empty())
 	{
-		cout << ++itrCount << endl;
+//		cout << ++itrCount << endl;
 
 		node = q.front();
 		q.pop_front();
-		visited.push_back(node.where);
+		visited.insert(node.where);
 
 		//	cout << "---curr node position" << node.where.player.getRow() << "," << node.where.player.getCol() << endl;
 
 		actionList = possibleActions(node.where); //get possible action list of current state
 		for (int i = 0; i < actionList.size(); i++)
 		{
-			//	cout << "can go to " << actionList[i] << endl;
 			Node child = getChild(node, actionList[i]); // get child of current node
 
-	///		cout << "past path of curr child : " << child.past << endl;
-
-			it_visited = find(visited.begin(), visited.end(), child.where);
+			//it_visited = find(visited.begin(), visited.end(), child.where);
 			it_q = find(q.begin(), q.end(), child);
-			if (it_visited == visited.end() && it_q == q.end())
+			if (visited.find(child.where) == visited.end() && it_q == q.end())
 			{
 				if (isSolved(child.where))
 					return child.past;
@@ -261,7 +260,7 @@ void setPrint(list<Node> set, int min)
 string Level::aStarSolver() {
 
 	list<Node> open;
-	set<Node> close;
+	set<State> close;
 
 	// start node
 	Node curr(initialState, nullptr, 0.0f);
@@ -273,60 +272,51 @@ string Level::aStarSolver() {
 	int tmpCount = 0;
 
 	vector<string>actionList;
+	actionList.reserve(4);
+
 	list<Node>::iterator it_open;
 	list<Node>::reverse_iterator rit_open;
-	set<Node>::iterator it_close;
 
 	while (!open.empty())
 	{
 		tmpCount++;
-		cout << "====ITERATION COUNT " << tmpCount << "======" << endl;
+//		cout << "====ITERATION COUNT " << tmpCount << "======" << endl;
 
-		//// open에서 가장 작은 비용 노드를 가져온 것이 curr가 됨..
-		it_open = min_element(open.begin(), open.end());
-		curr = *it_open;
-		//		cout << "curr " << curr.h << curr.move << curr.f() << endl;
-		//		setPrint(open, 0);
-		open.erase(it_open);
-		//	open.erase((++rit_open).base());
+		//// open에서 가장 작은 비용 노드를 가져온 것이 curr
+		rit_open = min_element(open.rbegin(), open.rend());
+		curr = *rit_open;
+		open.erase((++rit_open).base());
 
-		if (isSolved(curr.where))
-		{
-			cout << "iter count : " << tmpCount << endl;
-			cout << "open size : " << open.size() << endl;
-			cout << "close size : " << close.size() << endl;
-			return curr.past;
-		}
-
-		close.insert(curr);
-
-		//		cout << "closed path : " << curr.past << endl;
+		close.insert(curr.where);
 
 		actionList = possibleActions(curr.where);
-		//cout << "current pos : " << curr.where.player.getRow() << ", " << curr.where.player.getCol() << endl;
 
 		for (const auto& i : actionList)
 		{
 			child = getChild(curr, i);
-			//cout << "child :" << child.past << endl;
-			if (deadlockTest(child.where)) continue;
-
-			it_close = find(close.begin(), close.end(), child);
-			if (it_close != close.end())
+			if (isSolved(child.where))
 			{
-				continue;
+				cout << "iter count : " << tmpCount << endl;
+				cout << "open size : " << open.size() << endl;
+				cout << "close size : " << close.size() << endl;
+				return child.past;
 			}
+			// cout << "child :" << child.past << endl;
+			if (deadlockTest(child.where)) continue; // 갈 방향이 데드락
+			if (close.find(child.where) != close.end()) continue; // 갈 방향이 이미 close에 있음
 
+			child.h = child.getH(goals); // child의 비용 계산
 
 			it_open = find(open.begin(), open.end(), child);
 
-			child.h = child.getH(goals);
-
-			if (it_open != open.end())
+			if (it_open != open.end())  // open에 있으면 
 			{
-				if (child.move < (*it_open).move) (*it_open) = child;
+				if (child.move < (*it_open).move) // open에 있고 새 노드가 move비용이 적으면
+				{
+					(*it_open) = child;
+				}
 			}
-			else
+			else // 없으면 insert
 				open.push_back(child);
 		}
 	}

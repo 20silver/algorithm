@@ -65,8 +65,8 @@ float Node::getH(vector<Point>& goals)
 		matched[minIdx] = true; // mark 
 		sum += min;
 	}
-	//cout << "h : " << sum << endl;
-	return sum;
+
+	return sum * 2;
 }
 
 

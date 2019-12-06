@@ -1,14 +1,19 @@
-﻿#include <iostream>
+﻿/*
+
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include "Point.h"
 #include "State.h"
 #include "Level.h"
+#include <time.h>
 
 using namespace std;
 
 void loadFile()
 {
+	clock_t start, end;
+
 	ifstream fin;
 	fin.open("input.txt");
 	int mapCount;
@@ -59,12 +64,18 @@ void loadFile()
 
 	State init_state(boxes, player);
 	Level level(init_state, goals, walls);
-	string res = level.aStarSolver();
+	start = clock();
+	string res = level.bfsSolver();
+	end = clock();
+
 
 	cout << "result : " << res << endl;
+	cout << "execution time : " << (double)end - start << endl;
 }
 
 int main() {
 	loadFile();
 	return 0;
 }
+
+*/

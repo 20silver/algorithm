@@ -22,6 +22,7 @@ public:
 	int hashCode() const;
 
 	bool operator==(const State& n) const;
+	bool operator<(const State& n) const;
 };
 
 
