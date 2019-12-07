@@ -45,9 +45,6 @@ void levList(int *h, int *w, int *array, int y, int x, int n) {
 				mapdata[i][j] = n;
 			}
 		}
-		int py, px;
-                stage >> py >> px;
-                mapdata[py][px] = 5;
 		stage.close();
 	}
 	*array = mapdata[y][x];
