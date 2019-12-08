@@ -24,15 +24,15 @@ struct Object {
 #define N 30
 struct Object obj[N] = {};
 
-int wbox = 0, lev = 5, step = 0, push = 0, goal = 19;
+int wbox = 0, lev = 1, step = 0, push = 0, goal = 19;
 bool hasmap = false;
 int mapdata[10][10];
 
 void levList(int *h, int *w, int *array, int y, int x, int n) {
 	if (!hasmap){
-		char cstagenum = '0' + n; //stage num int to char
-		char sstagenum[12] = {'s', 't', 'a', 'g', 'e', '/', cstagenum, '.', 't', 'x', 't', '\0'};
-		ifstream stage(sstagenum);
+		//char cstagenum = '0' + n; //stage num int to char
+		//char sstagenum[12] = {'s', 't', 'a', 'g', 'e', '/', cstagenum, '.', 't', 'x', 't', '\0'};
+		ifstream stage("input.txt");
 		if(stage.fail())
 		{
 			printf("파일 없음");
@@ -145,12 +145,14 @@ void nextStage() {
 			return;
 		}
 	}
-	step = 0; push = 0; lev += 1;
-	if (lev == 6) {
-	 	stageClear();
-		return;
-	}
-	Level_UI(lev);
+	//step = 0; push = 0; lev += 1;
+	stageClear();
+	return;
+	// if (lev == 6) {
+	//  	stageClear();
+	// 	return;
+	// }
+	// Level_UI(lev);
 }
 
 void Play(int input) {
@@ -243,23 +245,24 @@ void Play(int input) {
 string loadFile(int stage)
 {
 	ifstream fin;
-	switch (stage) {
-	case 1:
-		fin.open("stage/1.txt");
-		break;
-	case 2:
-		fin.open("stage/2.txt");
-		break;
-	case 3:
-		fin.open("stage/3.txt");
-		break;
-	case 4:
-		fin.open("stage/4.txt");
-		break;
-	case 5:
-		fin.open("stage/5.txt");
-		break;
-	}
+	fin.open("input.txt");
+	// switch (stage) {
+	// case 1:
+	// 	fin.open("stage/1.txt");
+	// 	break;
+	// case 2:
+	// 	fin.open("stage/2.txt");
+	// 	break;
+	// case 3:
+	// 	fin.open("stage/3.txt");
+	// 	break;
+	// case 4:
+	// 	fin.open("stage/4.txt");
+	// 	break;
+	// case 5:
+	// 	fin.open("stage/5.txt");
+	// 	break;
+	// }
 
 	vector<Point> walls, goals, boxes;
 	Point player;
